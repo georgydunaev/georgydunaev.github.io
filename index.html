@@ -36,44 +36,6 @@
         <iframe src="about.html"></iframe>
     </div>
     <div class="right">
-<!--
-<iframe src="https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html"></iframe>
--->
-<!--
-        <iframe src="https://github.com/georgydunaev/variousreleases/blob/main/htmloutput.html"></iframe>
--->
-<!--
-        <SCRIPT TYPE="text/javascript">
-fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
-      .then(response => response.text())
-      .then(data => document.getElementById('code').textContent = data)
-</script>
-        <pre id="code"></pre>
-=====
-WORKS BUT WRONG
-
-  .then(html => {
-    document.getElementById("embedded-content").innerHTML = html;
-  });
-  
-=====
-
-  .then(html => {
-    const decoded = new DOMParser()
-      .parseFromString(html, "text/html")
-      .documentElement.textContent;
-
-    document.getElementById("embedded-content").innerHTML = decoded;
-  });  
-
-----
-const parser = new DOMParser(),
-  dom = parser.parseFromString(text, "text/html");
-const parser = new DOMParser();
-  
-
--->
-<!--  embedded-content -->
         <SCRIPT TYPE="text/javascript">
 fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
   .then(res => res.text())
