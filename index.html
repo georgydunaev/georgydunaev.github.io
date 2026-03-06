@@ -37,12 +37,21 @@
 <!--
         <iframe src="https://github.com/georgydunaev/variousreleases/blob/main/htmloutput.html"></iframe>
 -->
+<!--
         <SCRIPT TYPE="text/javascript">
 fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
       .then(response => response.text())
       .then(data => document.getElementById('code').textContent = data)
 </script>
         <pre id="code"></pre>
+-->
+        <SCRIPT TYPE="text/javascript">
+fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("embedded-content").innerHTML = html;
+  });
+</script>
         <!--"https://example.com"-->
     </div>
 </body>
