@@ -44,22 +44,36 @@ fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads
       .then(data => document.getElementById('code').textContent = data)
 </script>
         <pre id="code"></pre>
+=====
+WORKS BUT WRONG
 
   .then(html => {
     document.getElementById("embedded-content").innerHTML = html;
-  })
+  });
+  
+=====
 
--->
-        <SCRIPT TYPE="text/javascript">
-fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
-  .then(res => res.text())
   .then(html => {
     const decoded = new DOMParser()
       .parseFromString(html, "text/html")
       .documentElement.textContent;
 
     document.getElementById("embedded-content").innerHTML = decoded;
-  });
+  });  
+
+----
+const parser = new DOMParser(),
+  dom = parser.parseFromString(text, "text/html");
+
+-->
+        <SCRIPT TYPE="text/javascript">
+const parser = new DOMParser();
+  
+fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("embedded-content").innerHTML = html;
+  })
 </script>
         <!--"https://example.com"-->
     </div>
