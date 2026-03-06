@@ -33,7 +33,15 @@
         <iframe src="about.html"></iframe>
     </div>
     <div class="right">
+
+<!--
         <iframe src="https://github.com/georgydunaev/variousreleases/blob/main/htmloutput.html"></iframe>
+-->
+        <SCRIPT TYPE="text/javascript">
+fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
+      .then(response => response.text())
+      .then(data => document.getElementById('code').textContent = data)
+</script>
         <!--"https://example.com"-->
     </div>
 </body>
