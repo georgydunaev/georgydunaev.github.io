@@ -15,14 +15,46 @@
 </head>
 <body>
 
+<div id="myhtmloutput"></div>
 <SCRIPT TYPE="text/javascript">
-fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/output.html")
+let myaddr = "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main";
+
+let htmladdr = myaddr.concat("/","output",".","html");
+
+async function getText() {
+    let text = sessionStorage.getItem("text");
+
+    if (!text) {
+        const res = await fetch(htmladdr);
+        text = await res.text();
+        sessionStorage.setItem("text", text);
+        console.log("The text has been downloaded. (async)")
+    }
+
+    return text;
+}
+
+// synchronous function (it is not used)
+function myOldDownload() {
+
+fetch(htmladdr)
   .then(res => res.text())
   .then(html => {
     document.getElementById("myhtmloutput").innerHTML = html
   });
+
+console.log("The text has been downloaded. (sync)")
+
+}
+
+async function myNewDownload() {
+  document.getElementById("myhtmloutput").innerHTML = await getText()
+}
+
+myNewDownload();
+
 </script>
-<div id="myhtmloutput"></div>
+
 
 </body>
 </html>
