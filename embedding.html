@@ -16,13 +16,13 @@
 <body>
 
 <SCRIPT TYPE="text/javascript">
-fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/htmloutput.html")
+fetch("https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/output.html")
   .then(res => res.text())
   .then(html => {
-    document.getElementById("htmloutput").innerHTML = html
+    document.getElementById("myhtmloutput").innerHTML = html
   });
 </script>
-<div id="htmloutput"></div>
+<div id="myhtmloutput"></div>
 
 </body>
 </html>
