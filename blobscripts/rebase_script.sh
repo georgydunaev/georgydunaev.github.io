@@ -10,19 +10,57 @@ cd ../../variousreleases/
 git add CV_DE.pdf
 # git add CV_EN.pdf
 # git add foundations_001.pdf
-git add htmloutput.html
-git add pdfoutput.pdf
+git add output.html
+git add output.pdf
 git add .gitignore
 git add -u
 
-# git add --all
+ls -a
+git status
+
+function ask_yes_or_no() {
+    read -p "$1 ([y]es or [N]o): "
+    case $(echo $REPLY | tr '[A-Z]' '[a-z]') in
+        y|yes) echo "yes" ;;
+        *)     echo "no" ;;
+    esac
+}
+
+if [[ "no" == $(ask_yes_or_no "Automatic rebase will be done. Are you sure?") || \
+      "no" == $(ask_yes_or_no "Are you *really* sure?") ]]
+then
+    echo "Skipped."
+    exit 0
+fi
+
+git add --all
 
 #######
+# blob autoupdate
+#git commit -m"fixup!Initial commit (frequently forced push commit)"
 
-git commit -m"blob autoupdate"
+#git commit --fixup="Initial commit" -m"blob"
+#echo $(git log --grep="Initial commit" --format="%H")
+hashinitcommit=$(git log --grep="Initial commit" --format="%H")
+
+#git commit --fixup=HEAD -m"blob"
+git diff-index --quiet HEAD || (git commit --fixup=$hashinitcommit -m"blob update")
+
+#git rebase --autosquash --root
+git rebase -i --autosquash --root
+# yes | git rebase -i --autosquash --root
 
 # git rebase -i --root
+
+# pick Initial commit
+# f ...
+
+# r Initial commit
+# f ...
+
 # ...
-# git push -f
+
+
+git push -f
 
 
