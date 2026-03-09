@@ -26,11 +26,16 @@ function ask_yes_or_no() {
     esac
 }
 
+if false;
+then
+
 if [[ "no" == $(ask_yes_or_no "Automatic rebase will be done. Are you sure?") || \
       "no" == $(ask_yes_or_no "Are you *really* sure?") ]]
 then
     echo "Skipped."
     exit 0
+fi
+
 fi
 
 git add --all
@@ -46,9 +51,15 @@ hashinitcommit=$(git log --grep="Initial commit" --format="%H")
 #git commit --fixup=HEAD -m"blob"
 git diff-index --quiet HEAD || (git commit --fixup=$hashinitcommit -m"blob update")
 
-#git rebase --autosquash --root
-git rebase -i --autosquash --root
-# yes | git rebase -i --autosquash --root
+# git rebase --autosquash --root
+
+# git rebase -i --autosquash --root
+
+git -c sequence.editor=true rebase -i --autosquash --root 
+
+# git -c sequence.editor=cat rebase -i --autosquash --root
+
+
 
 # git rebase -i --root
 
