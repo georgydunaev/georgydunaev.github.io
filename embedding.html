@@ -48,7 +48,8 @@ console.log("The text has been downloaded. (sync)")
 }
 
 async function myNewDownload() {
-  document.getElementById("myhtmloutput").innerHTML = await getText()
+  document.getElementById("myhtmloutput").innerHTML = await getText();
+  window.scrollTo(0,1550);
 }
 
 myNewDownload();
