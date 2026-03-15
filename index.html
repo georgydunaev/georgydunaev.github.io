@@ -41,8 +41,44 @@
         }
     </style>
             <!-- overflow: scroll; -->
+    <link rel="stylesheet" href="assets/vendor/silktide-consent-manager.css">
 </head>
 <body>
+    <script src="assets/vendor/silktide-consent-manager.js"></script>
+    <script>
+    // Initialize the consent manager
+    window.silktideConsentManager.init({
+      consentTypes: [
+        {
+          id: 'essential',
+          label: 'Essential',
+          description: 'These are necessary for the website to function and cannot be switched off.',
+          required: true,
+        },
+        {
+          id: 'analytics',
+          label: 'Analytics',
+          description: 'These help us understand how visitors interact with the website.',
+          defaultValue: true,
+          gtag: 'analytics_storage', // Automatic Google Tag Manager / Silktide Analytics integration
+        },
+        {
+          id: 'marketing',
+          label: 'Marketing',
+          description: 'These are used to deliver personalized advertisements.',
+          defaultValue: false,
+          gtag: ['ad_storage', 'ad_user_data', 'ad_personalization'],
+          onAccept: function() {
+            console.log('Marketing accepted');
+          },
+          onReject: function() {
+            console.log('Marketing rejected');
+          },
+        },
+      ],
+    });
+    </script>
+
     <div class="left">
         <iframe src="about.html"></iframe>
     </div>
