@@ -1,0 +1,4 @@
+- name: Checkout your repository using git
+  uses: actions/checkout@v4
+  with:
+      submodules: 'recursive' # This line fetches your submodules
