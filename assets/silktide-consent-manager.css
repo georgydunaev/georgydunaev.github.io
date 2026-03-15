@@ -14,7 +14,7 @@
   --textColor: #F4F0DF;
   --backdropBackgroundColor: #00000077;
   --backdropBackgroundBlur: 0px;
-  --iconColor: #050505;
+  --iconColor: #255555;
   --iconBackgroundColor: #F9D000;
   position: fixed;
   bottom: 0;
@@ -461,7 +461,7 @@ Modal - Footer
   display: none;
   position: fixed;
   bottom: 10px;
-  left: 10px;
+  right: 10px;
   justify-content: center;
   align-items: center;
   width: 60px;
