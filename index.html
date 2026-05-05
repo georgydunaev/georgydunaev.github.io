@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TCXK5XYFYQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-TCXK5XYFYQ');
     </script>
-    <meta charset="UTF-8">
-    <!-- Mr. -->
-    <title>Georgy Dunaev | Programmer &amp; Mathematician</title>
+
+    <title>
+    (no title)
+    <!--
+    No Title
+    -->
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -82,9 +86,16 @@
     </script>
 
 
-
-
-
+    <script>
+window.addEventListener('message', function(event) {
+    // Optional: Verify origin for security
+    // if (event.origin !== "https://trusted-site.com") return;
+    
+    if (event.data.type === 'CHANGE_TITLE') {
+        document.title = event.data.title;
+    }
+});
+    </script>
 
     <div class="left">
         <iframe src="about.html"></iframe>
