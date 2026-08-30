@@ -31,9 +31,7 @@ header {
             margin-bottom: 20px;
 }
         body {
-            width: 90%;            
             margin: 0px auto;
-            padding: 0 10px;
             font-family: Georgia, "Times New Roman", serif;
             line-height: 1.6;
             color: #222;
@@ -50,7 +48,14 @@ header {
         }
         h1, h2 {
             border-bottom: 2px solid #ddd;
+            border-bottom: 0px;
             padding-bottom: 0px;
+            margin-bottom: 0px;
+            padding-left: 0px;
+            padding-top: 5px;
+        }
+        red {
+            color: #FF0000;
         }
         a {
             color: #003366;
@@ -64,33 +69,48 @@ header {
             background-color: #DEDEDE;  
             border-radius: 25px;
             padding: 10px;
-            padding-top: 10px;
+            padding-top: 0px;
         }
         .footer {
             margin-top: 50px;
             font-size: 0.9em;
             color: #777;
             background-color: #fafafa;
-            width: 100%; 
             padding: 0 0px;
         }
+        vr
+{
+    background-color: red;
+    display: inline-block;
+    margin: 0em 1em 0em 1em;
+    height: 1em;
+    width: 2px;
+}
     </style>
     <!--
+    <vr></vr>
     <link rel="icon" type="image/x-icon" href="/images/new/favicon16.ico">
     -->
     <link rel="shortcut icon" type="image/x-icon" href="/images/myfavicon.ico"/>
 </head>
 <body>
+<!--
+<div style="width: 90%; padding: 0 10px;">
+<div style=divbody width=90%> 
+  border-right: 0px
+-->
+<div style="padding: 25px;">
 <header>
   <!-- <img src="https://cdn6.hexlet.io/1P6tmafZTIy5.png" alt="Логотип"> < ! -- Логотип сайта -->
   <h2 style="border-right: 0px; padding: 0; margin: 0;">
   <img src="images/logo.png" style="width: 64px; height: 64px; display: inline-block; vertical-align: middle">
   <text style="display:inline-block; background-color: #fafafa; text-align: center;            border-radius: 25px;
             padding: 10px;
-">Georgy Dunaev | Obelisk Proof Assistant</text>
+">Georgy Dunaev | <span style="color: red;">O</span>belisk <span style="color: red;">P</span>roof <span style="color: red;">A</span>ssistant</text>
   </h2>  
   <!-- Меню -->
   <!--
+<mark class="red"></mark>
   <div id="menu"> 
     <ul>
       <li><a href="/">Главная</a></li>
@@ -121,7 +141,7 @@ header {
 ❗‼️
 -->
     <div class="section"             padding-top=10px>
-    <h2>Welcome</h2>
+    <h2>Greetings</h2>
     <p>
       <!--
       Welcome to my personal page!
@@ -146,17 +166,30 @@ header {
       </p>
       <!--
       On the right side of this page, you can find a presentation on class-theoretic foundations of mathematics.  
+Welcome to my personal page!
+      The presentation on my decade-long passion project
+      There are end results are planned to three parts:
       -->
-      The presentation on my decade-long passion project is in the viewport on the right.
+      This site is both my personal page, and a demo, which is in the viewport on the right.
       <br>
       (<!--It is --><!--b-->scrollable<!--/b--> both up and down<!--.-->)
       <br>
-      It consists of 3 parts: a proof assistant, a programming language, and "refactored" classical class-theoretic foundations of mathematics.
+      Three results may be achieved:
+      <ul>
+      <li>
+      a new proof assistant,
+      </li>
+      <li>
+      a new programming language with certain nice properties,
+      </li>
+      <li>
+      "refactored" classical class-theoretic foundations of mathematics.
+      </li>
+      </ul>
       <!--
       which includes some original constructions.
       -->
       <!-- -->
-      <br>
       <!-- -->
       <!--
       The underlying mathematical theory of it deals with classes in a sense that shares the same class ontology with widely accepted foundational theories NBG and MK (and not with AST), as usual modulo consistency strength due to (optionally) extension via axioms.
@@ -406,9 +439,16 @@ Georgy Dunaev | Programmer &amp; Mathematician
         Potsdam University<br>-->
         <h2>Contacts</h2>
         <!-- Project-related: -->
+
+<!--
 <table>
     <tr>
         <td align="right" width=225px>
+-->
+<!--
+        <ul>
+            <li>
+-->
         <SCRIPT TYPE="text/javascript">
             emailE = 'obelisk.mozmail.com'
             emailE = ('contact' + '@' + emailE)
@@ -418,8 +458,14 @@ Georgy Dunaev | Programmer &amp; Mathematician
             Email address protected by JavaScript
         </NOSCRIPT>
         <!-- -->
+<!--
+            </li>
+        </ul>
+-->
+<!--
         <br>        
         </td>
+-->
 <!--
         <td>
          (regarding the project)
@@ -512,6 +558,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
         <img src="images/Thanks.jpg" style="width: 200px; border-radius: 10px;">
     </div>
 
+</div>
     <div class="footer">
         © 2026 Georgy Dunaev
     </div>
