@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+position: absolute; top: 0; left:0; 
+
+        div {
+            background-color: #DEDEFF;  
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+-->
 <head>
     <meta charset="UTF-8">
     <!--
@@ -12,6 +22,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--max-width: 800px; -->
     <style>
+header {
+  background-image: url("images/tiling1.webp");
+  background-repeat: repeat;
+  background-size: 150px;
+            border-radius: 25px;
+            padding: 10px;
+            margin-bottom: 20px;
+}
         body {
             width: 90%;            
             margin: 0px auto;
@@ -20,10 +38,19 @@
             line-height: 1.6;
             color: #222;
             background-color: #fafafa;
+  background-image: url("images/papyrus.jpeg");
+  background-repeat: repeat;
+  background-size: 100px;
+
+        }
+        .myA {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  border-right: 0px; padding: 0; margin: 0;
         }
         h1, h2 {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0px;
         }
         a {
             color: #003366;
@@ -33,22 +60,53 @@
             text-decoration: underline;
         }
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            background-color: #DEDEDE;  
+            border-radius: 25px;
+            padding: 10px;
+            padding-top: 10px;
         }
         .footer {
             margin-top: 50px;
             font-size: 0.9em;
             color: #777;
+            background-color: #fafafa;
+            width: 100%; 
+            padding: 0 0px;
         }
     </style>
     <!--
     <link rel="icon" type="image/x-icon" href="/images/new/favicon16.ico">
     -->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/myfavicon.ico"/>    
+    <link rel="shortcut icon" type="image/x-icon" href="/images/myfavicon.ico"/>
 </head>
 <body>
+<header>
+  <!-- <img src="https://cdn6.hexlet.io/1P6tmafZTIy5.png" alt="Логотип"> < ! -- Логотип сайта -->
+  <h2 style="border-right: 0px; padding: 0; margin: 0;">
+  <img src="images/logo.png" style="width: 64px; height: 64px; display: inline-block; vertical-align: middle">
+  <text style="display:inline-block; background-color: #fafafa; text-align: center;            border-radius: 25px;
+            padding: 10px;
+">Obelisk Proof Assistant</text>
+  </h2>  
+  <!-- Меню -->
+  <!--
+  <div id="menu"> 
+    <ul>
+      <li><a href="/">Главная</a></li>
+      <li><a href="/about">О нас</a></li>
+      <li><a href="/contacts">Контакты</a></li>
+    </ul>
+  </div>
+  -->
+</header>
     <!-- Mr. -->
+    <!--
     <h2> Georgy Dunaev </h2>
+    -->
+
+
+    
     <!--
     <h2> Georgy Dunaev | Programmer &amp; Mathematician</h2>
     -->
@@ -62,6 +120,8 @@
     </p>
 ❗‼️
 -->
+    <div class="section"             padding-top=10px>
+    <h2>Welcome</h2>
     <p>
       Welcome to my personal page!
       <!--       -->
@@ -108,7 +168,7 @@
       <a href="#">here</a>.
       -->
     </p>
-
+    </div>
 <!--
     <SCRIPT TYPE="text/javascript">
         window.top.document.title = "0123456789";
@@ -359,9 +419,11 @@ Georgy Dunaev | Programmer &amp; Mathematician
         <!-- -->
         <br>        
         </td>
+<!--
         <td>
-        <!-- (regarding the project) -->
+         (regarding the project)
         </td>
+-->
     </tr>
     <!--
     <tr>
@@ -437,7 +499,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
 
     <div class="section">
         <h2>Acknowledgements</h2>
-        <img src="images/Thanks.jpg" style="width: 75%">
+        <img src="images/Thanks.jpg" style="width: 200px; border-radius: 10px;">
     </div>
 
     <div class="footer">
