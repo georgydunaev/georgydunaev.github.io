@@ -12,7 +12,9 @@ position: absolute; top: 0; left:0;
 -->
 <head>
     <meta charset="UTF-8">
+    <!-- NO TITLE (because iframe)
     <title>Georgy Dunaev | Programmer &amp; Mathematician</title>
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--max-width: 800px; -->
     <style>
@@ -108,7 +110,7 @@ header {
                 align-items: center;
                 gap: 10px;
             }
-            header h2 text {
+            header h2 .title-text {
                 font-size: 1.15em;
                 max-width: 100%;
             }
@@ -148,12 +150,7 @@ width: 80%;
 <header>
   <!-- <img src="https://cdn6.hexlet.io/1P6tmafZTIy5.png" alt="Логотип"> < ! -- Логотип сайта -->
   <h2 style="border-right: 0px; padding: 0; margin: 0;">
-  <!-- 
-  <img src="images/logo.png" style="width: 64px; height: 64px; display: inline-block; vertical-align: middle">
-  -->
-  <text style="display:inline-block; background-color: #fafafa; text-align: center;            border-radius: 25px;
-            padding: 10px;
-">Georgy Dunaev</text>
+  <span class="title-text" style="display:inline-block; background-color: #fafafa; text-align: center; border-radius: 25px; padding: 10px;">Georgy Dunaev</span>
   </h2>  
   <!-- Меню -->
   <!--
@@ -218,24 +215,6 @@ Welcome to my personal page!
       The presentation on my decade-long passion project
       There are end results are planned to three parts:
       -->
-<!--
-      This site is both my personal page, and a demo, which is in the viewport on the right.
-      <br>
-      (< ! - -It is - - >< ! - -b- - >scrollable< ! - -/b- - > both up and down< ! - - . - - >)
-      <br>
-      Three results may be achieved:
-      <ul>
-      <li>
-      a new proof assistant,
-      </li>
-      <li>
-      a new programming language with certain nice properties,
-      </li>
-      <li>
-      "refactored" classical class-theoretic foundations of mathematics.
-      </li>
-      </ul>
--->
       <!--
       which includes some original constructions.
       -->
@@ -285,43 +264,6 @@ Georgy Dunaev | Programmer &amp; Mathematician
          (website for the project and other materials about the foundations of mathematics) ‼️ <!-- ; currently also a personal page -->
         </td>
     </tr>
-<!-- good
-    <tr>
-        <td align="right" width=75px>
-                <a href="embedding.html" target=_top>
-                [HTML]
-                </a>
-        </td>
-        <td>
-         (full-screen demonstration)
-        </td>
-    </tr>
-    <tr>
-        <td align="right" width=75px>
-                < ! - - "https://github.com/georgydunaev/variousreleases/blob/main/output.pdf" - - >
-                <a href=
-                "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/output.pdf"
-                target=_top>
-                [PDF]
-                </a>
-        </td>
-        <td>
-                (dark background)
-        </td>
-    </tr>
-    <tr>
-        <td align="right" width=75px>
-                <a href=
-                "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/output_white.pdf"
-                target=_top>
-                [PDF]
-                </a>
-        </td>
-        <td>
-                (ink-saving light background)
-        </td>
-    </tr>
--->
 </table>
             </li>
             <li>
@@ -432,11 +374,9 @@ Georgy Dunaev | Programmer &amp; Mathematician
                 [link]
                 </a>
         </td>
-<!--
         <td>
         (a publication about the project)
         </td>
--->
     </tr>
 </table>
             </li>
@@ -479,26 +419,6 @@ Georgy Dunaev | Programmer &amp; Mathematician
     <div class="section">
         <h2>Miscellaneous</h2>
         <ul>
-<!--
-            <li>
-            ‼️ Independent analysis of <strong>Obelisk</strong>: formalization of statements, and automatically generated compilable proofs for the <strong>LEAN</strong> proof assistant, made by <strong>Claude</strong>(<strong>Fable 5</strong>): 
-            <br>
-<table>
-    <tr>
-        <td align="right" width="75px">
-                <a href=
-                "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/FABLE.pdf"
-                target="_top">
-                [PDF]
-                </a>
-        </td>
-        <td>
-            (slightly outdated, but very informative) < ! - - slightly outdated, but very informative! - - >
-        </td>
-    </tr>
-</table>
-            </li>
--->
             <li>
             Outdated personal page:<br>
 <table>
@@ -514,33 +434,6 @@ Georgy Dunaev | Programmer &amp; Mathematician
     </tr>
 </table>
             </li>
-<!--good2
-            <li>
-            Presentations "<strong>Antivibecoding</strong>"(WIP):<br>
-<table>
-    <tr>
-        <td align="right" width="75px">
-            <a href="https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/antivibecoding.odp" target="_top">
-            [ODP]
-            </a>
-        </td>
-        <td>
-            (classical presentation about the goals of the project)
-        </td>
-    </tr>
-    <tr>
-        <td align="right" width="75px">
-            <a href="embedding_anti.html" target="_top">
-            [HTML]
-            </a>
-        </td>
-        <td>
-            (AI-generated presentation about the goals of the project)
-        </td>
-    </tr>
-</table>
-            </li>
--->
         </ul>
     </div>
 
@@ -579,7 +472,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
         <p>
         <SCRIPT TYPE="text/javascript">
             emailE = 'obelisk.mozmail.com'
-            emailE = ('contact' + '@' + emailE)
+            emailE = ('CV' + '@' + emailE)
             document.write('<A href="mailto:' + emailE + '">' + emailE + '</a>')
         </script>
         <NOSCRIPT>
@@ -643,12 +536,6 @@ Georgy Dunaev | Programmer &amp; Mathematician
 
 
 
-<!--
-    <div class="section">
-        <h2>Acknowledgements</h2>
-        <img src="images/Thanks.jpg" style="width: 200px; border-radius: 10px;">
-    </div>
--->
         <!--
     <div class="section">
 
@@ -675,11 +562,6 @@ width=100% height=calc(width * 300/400);
 
 
 </div>
-<!--
-<center>
-<iframe width="600" height="450" src="https://datastudio.google.com/embed/reporting/73aedcc3-d02d-480b-b20d-37d0d36bee0c/page/l8w7F" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
-</center>
--->
     <div class="footer">
         © 2026 Georgy Dunaev
     </div>
