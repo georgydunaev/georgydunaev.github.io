@@ -12,16 +12,16 @@ position: absolute; top: 0; left:0;
 -->
 <head>
     <meta charset="UTF-8">
-    <!--
-    NO TITLE
-    Mr. 
-    <title>
-    BBBGeorgy Dunaev | Programmer &amp; Mathematician
-    </title>
-    -->
+    <title>Georgy Dunaev | Programmer &amp; Mathematician</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--max-width: 800px; -->
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html, body {
+            overflow-x: hidden;
+        }
 header {
   background-image: url("images/tiling1.webp");
   background-repeat: repeat;
@@ -39,7 +39,19 @@ header {
   background-image: url("images/papyrus.jpeg");
   background-repeat: repeat;
   background-size: 100px;
-
+            overflow-wrap: break-word;
+        }
+        .container {
+            padding: 25px;
+        }
+        img {
+            max-width: 100%;
+        }
+        iframe {
+            max-width: 100%;
+        }
+        table {
+            max-width: 100%;
         }
         .myA {
   color: white;
@@ -76,7 +88,7 @@ header {
             font-size: 0.9em;
             color: #777;
             background-color: #fafafa;
-            padding: 0 0px;
+            padding: 10px 25px;
         }
         vr
 {
@@ -86,6 +98,35 @@ header {
     height: 1em;
     width: 2px;
 }
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+            header h2 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            header h2 text {
+                font-size: 1.15em;
+                max-width: 100%;
+            }
+            .section {
+                border-radius: 15px;
+            }
+            ul {
+                padding-left: 20px;
+            }
+            iframe {
+                width: calc(100% - 24px);
+                height: auto;
+                aspect-ratio: 4 / 3;
+            }
+            .footer {
+                padding: 10px 12px;
+            }
+        }
     </style>
     <!--
     <vr></vr>
@@ -103,7 +144,7 @@ header {
 <div style="padding: 25px;">
 width: 80%;
 -->
-<div style="padding: 25px;">
+<div class="container">
 <header>
   <!-- <img src="https://cdn6.hexlet.io/1P6tmafZTIy5.png" alt="Логотип"> < ! -- Логотип сайта -->
   <h2 style="border-right: 0px; padding: 0; margin: 0;">
@@ -146,31 +187,31 @@ width: 80%;
     </p>
 ❗‼️
 -->
-    <div class="section"             padding-top=10px>
+    <div class="section" style="padding-top: 10px;">
     <h2>Greetings</h2>
-    <p>
       <!--
       Welcome to my personal page!
              -->
       <!--br-->
       <!--Feel free to-->
-      <p>
       <!--
+      <p>
       Here you can get yourself acquainted with my CV and projects.
-      -->
       </p>
-      <p>
-      <!--<b style='color:red;'>
-      LOOKING FOR A JOB
-      </b> -->
-
+      -->
       <!--
+      <p>
+      <b style='color:red;'>
+      LOOKING FOR A JOB
+      </b>
+
       Current status: 
       open to the wide range of IT-related positions<br>
-      -->
-      <!--/b-->
       </p>
+      -->
+    <p>
       Welcome to my personal page!
+    </p>
       <!--
       On the right side of this page, you can find a presentation on class-theoretic foundations of mathematics.  
 Welcome to my personal page!
@@ -210,7 +251,6 @@ Welcome to my personal page!
       The most interesting is 
       <a href="#">here</a>.
       -->
-    </p>
     </div>
 <!--
     <SCRIPT TYPE="text/javascript">
@@ -236,13 +276,13 @@ Georgy Dunaev | Programmer &amp; Mathematician
 <table>
 
     <tr>
-        <td align="right" width=75px>
-                <a href="https://obeliskproofassistant.github.io/" target=_top>
+        <td align="right" width="75px">
+                <a href="https://obeliskproofassistant.github.io/" target="_top">
                 [link]
                 </a>
         </td>
         <td>
-         (website for the project and other materials about foundations of mathematics) ‼️ <!-- ; currently also a personal page -->
+         (website for the project and other materials about the foundations of mathematics) ‼️ <!-- ; currently also a personal page -->
         </td>
     </tr>
 <!-- good
@@ -285,15 +325,15 @@ Georgy Dunaev | Programmer &amp; Mathematician
 </table>
             </li>
             <li>
-                Monography "<strong>Class-Theoretic Foundations of Mathematics</strong>":<br>
-                Unfinished 200-pages document.<br>
+                Monograph "<strong>Class-Theoretic Foundations of Mathematics</strong>":<br>
+                Unfinished 200-page document.<br>
 <!--
                 The following 200-pages document is rather a sandbox with a variety of topics than a monography. Therefore, inevitably, it has numerous of errors and is innately incoherent as a text.<br>
 
 
 -->
 <!--
-                <a href="https://github.com/georgydunaev/foundations/releases/tag/FirstRelease" target=_top>[github prerelease]</a>(not availible)<br>
+                <a href="https://github.com/georgydunaev/foundations/releases/tag/FirstRelease" target="_top">[github prerelease]</a>(not available)<br>
 -->
 <table>
     <tr>
@@ -301,7 +341,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
 <!-- "https://github.com/georgydunaev/foundations/releases/download/FirstRelease/001_foundations.pdf" -->
                 <a href=
                 "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/foundations.pdf"
-                target=_top>[PDF]</a>
+                target="_top">[PDF]</a>
         </td>
         <td>                
                  (request via email)
@@ -320,17 +360,17 @@ Georgy Dunaev | Programmer &amp; Mathematician
             <li>
         <!--(request via email)-->
         <!--unavailable,  -->
-        in English
+        In English
         <a href=
         "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/CV_EN.pdf"
-         target=_top>
+         target="_top">
         [PDF]
         </a>
             </li>        
             <li>
-        in German <a href=
+        In German <a href=
         "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/CV_DE.pdf"
-        target=_top>
+        target="_top">
         [PDF]
         </a>     
             </li>
@@ -341,25 +381,25 @@ Georgy Dunaev | Programmer &amp; Mathematician
 -->
 <!--, -->
             <li>
-        in Russian
+        In Russian
         <a href=
         "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/CV_RU.pdf"
-        target=_top>
+        target="_top">
         [PDF]
         </a>
             </li>
             <li>
-        in English
+        In English
         <a href=
         "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/CV_EN_reportlab.pdf"
-         target=_top>
+         target="_top">
         [PDF]
         </a> (WIP: generated via Claude+Python+ReportLab)
             </li>        
 
         </ul>
 
-        <!-- (not yet availible)
+        <!-- (not yet available)
 -->
         <!-- Lebenslauf: <a href="#">[DE.PDF]</a> -->
     </div>
@@ -373,7 +413,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
 <table>
     <tr>
         <td align="right" width="75px"><!-- 13% -->
-                <a href="https://isa-afp.org/entries/Recursion-Addition.html" target=_top>
+                <a href="https://isa-afp.org/entries/Recursion-Addition.html" target="_top">
                 [link]
                 </a>
         </td>
@@ -384,11 +424,11 @@ Georgy Dunaev | Programmer &amp; Mathematician
 </table>
             </li>
             <li>
-            A proof assistant project goals declaration:<br>
+            Declaration of the proof assistant project goals:<br>
 <table>
     <tr>
-        <td align="right" width=75px>
-                <a href="https://ai4math.de/publications/the-obelisk-proof-assistant/" target=_top>
+        <td align="right" width="75px">
+                <a href="https://ai4math.de/publications/the-obelisk-proof-assistant/" target="_top">
                 [link]
                 </a>
         </td>
@@ -448,7 +488,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
         <td align="right" width="75px">
                 <a href=
                 "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/FABLE.pdf"
-                target=_top>
+                target="_top">
                 [PDF]
                 </a>
         </td>
@@ -464,12 +504,12 @@ Georgy Dunaev | Programmer &amp; Mathematician
 <table>
     <tr>
         <td align="right" width="75px">
-            <a href="https://mathandcomp.wordpress.com/" target=_top>
+            <a href="https://mathandcomp.wordpress.com/" target="_top">
             [link]
             </a>
         </td>
         <td>
-            (descriptions of my Github repositories)
+            (descriptions of my GitHub repositories)
         </td>
     </tr>
 </table>
@@ -480,7 +520,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
 <table>
     <tr>
         <td align="right" width="75px">
-            <a href="https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/antivibecoding.odp" target=_top>
+            <a href="https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/antivibecoding.odp" target="_top">
             [ODP]
             </a>
         </td>
@@ -490,7 +530,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
     </tr>
     <tr>
         <td align="right" width="75px">
-            <a href="embedding_anti.html" target=_top>
+            <a href="embedding_anti.html" target="_top">
             [HTML]
             </a>
         </td>
@@ -508,13 +548,13 @@ Georgy Dunaev | Programmer &amp; Mathematician
     <div class="section">
         <h2>Research</h2>
         <!--Research Interests -->
-        <!--p-->
+        <p>
             Software development, testing, formal verification, functional programming languages, compilers, proof assistants.
             <!--
             Algebraic geometry, number theory, and representation theory.
             Currently working on problems related to modular forms and arithmetic geometry.
             -->
-        <!--/p-->
+        </p>
     </div>
 
 
@@ -536,6 +576,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
         <ul>
             <li>
 -->
+        <p>
         <SCRIPT TYPE="text/javascript">
             emailE = 'obelisk.mozmail.com'
             emailE = ('contact' + '@' + emailE)
@@ -544,6 +585,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
         <NOSCRIPT>
             Email address protected by JavaScript
         </NOSCRIPT>
+        </p>
         <!-- -->
 <!--
             </li>
@@ -558,7 +600,9 @@ Georgy Dunaev | Programmer &amp; Mathematician
          (regarding the project)
         </td>
 -->
+    <!--
     </tr>
+    -->
     <!--
     <tr>
         <td align="right" width=225px>
@@ -576,7 +620,9 @@ Georgy Dunaev | Programmer &amp; Mathematician
         </td>
     </tr>
     -->
+<!--
 </table>
+-->
 
         <!-- -->
         <!-- Secondary: -->
