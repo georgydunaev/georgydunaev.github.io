@@ -17,119 +17,8 @@ position: absolute; top: 0; left:0;
     -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--max-width: 800px; -->
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        html, body {
-            overflow-x: hidden;
-        }
-header {
-  background-image: url("images/tiling1.webp");
-  background-repeat: repeat;
-  background-size: 150px;
-            border-radius: 25px;
-            padding: 10px;
-            margin-bottom: 20px;
-}
-        body {
-            margin: 0px auto;
-            font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.6;
-            color: #222;
-            background-color: #fafafa;
-  background-image: url("images/papyrus.jpeg");
-  background-repeat: repeat;
-  background-size: 100px;
-            overflow-wrap: break-word;
-        }
-        .container {
-            padding: 25px;
-        }
-        img {
-            max-width: 100%;
-        }
-        iframe {
-            max-width: 100%;
-        }
-        table {
-            max-width: 100%;
-        }
-        .myA {
-  color: white;
-  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-  border-right: 0px; padding: 0; margin: 0;
-        }
-        h1, h2 {
-            border-bottom: 2px solid #ddd;
-            border-bottom: 0px;
-            padding-bottom: 0px;
-            margin-bottom: 0px;
-            padding-left: 0px;
-            padding-top: 5px;
-        }
-        red {
-            color: #FF0000;
-        }
-        a {
-            color: #003366;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            margin-bottom: 30px;
-            background-color: #DEDEDE;  
-            border-radius: 25px;
-            padding: 10px;
-            padding-top: 0px;
-        }
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #777;
-            background-color: #fafafa;
-            padding: 10px 25px;
-        }
-        vr
-{
-    background-color: red;
-    display: inline-block;
-    margin: 0em 1em 0em 1em;
-    height: 1em;
-    width: 2px;
-}
-        @media (max-width: 600px) {
-            .container {
-                padding: 12px;
-            }
-            header h2 {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            header h2 .title-text {
-                font-size: 1.15em;
-                max-width: 100%;
-            }
-            .section {
-                border-radius: 15px;
-            }
-            ul {
-                padding-left: 20px;
-            }
-            iframe {
-                width: calc(100% - 24px);
-                height: auto;
-                aspect-ratio: 4 / 3;
-            }
-            .footer {
-                padding: 10px 12px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+
     <!--
     <vr></vr>
     <link rel="icon" type="image/x-icon" href="/images/new/favicon16.ico">
@@ -210,7 +99,7 @@ Georgy Dunaev | Programmer &amp; Mathematician
         <!-- Project-related: -->
 
 <!--
-<table>
+<table class="tableList">
     <tr>
         <td align="right" width=225px>
 -->
@@ -284,11 +173,11 @@ Georgy Dunaev | Programmer &amp; Mathematician
 <form action="https://api.web3forms.com/submit" method="POST">
   Fill the callback form!<!--<br>(all fields are optional)-->
   <input type="hidden" name="access_key" value="361ac473-9aee-40a6-b52d-01cfd484914c">
-<table>
+<table><!--class="tableList"-->
     <tr>
-        <td align="right" width="75px">
+        <th>
 Name:
-        </td>
+        </th>
         <td>
 <input type="text" name="name">
         </td>
@@ -297,9 +186,9 @@ Name:
         </td>
     </tr>
     <tr>
-        <td align="right" width="75px">
+        <th>
 Phone:
-        </td>
+        </th>
         <td>
 <input type="phone" name="phone">
         </td>
@@ -308,9 +197,9 @@ Phone:
         </td>
     </tr>
     <tr>
-        <td align="right" width="75px">
+        <th>
 Email:
-        </td>
+        </th>
         <td>
 <input type="email" name="email"><br>
         </td>
@@ -319,9 +208,9 @@ Email:
         </td>
     </tr>
     <tr>
-        <td align="right" width="75px">
+        <th>
 Message:
-        </td>
+        </th>
         <td>
 <textarea name="message"></textarea>
         </td>
@@ -330,8 +219,8 @@ Message:
         </td>
     </tr>
     <tr>
-        <td align="right" width="75px">
-        </td>
+        <th>
+        </th>
         <td>
 <button type="submit">Submit</button>
         </td>
@@ -346,16 +235,15 @@ Message:
         <ul>
             <li>
                 Proof assistant "<strong>Obelisk</strong>":<!--(higher-order logic version)--><br>
-<table>
-
+<table class="tableList">
     <tr>
-        <td align="right" width="75px">
+        <th>
                 <a href="https://obeliskproofassistant.github.io/" target="_top">
-                [link]
+                ‼️[link]
                 </a>
-        </td>
+        </th>
         <td>
-         (website for the project and other materials about the foundations of mathematics) ‼️ <!-- ; currently also a personal page -->
+         (website for the project and other materials about the foundations of mathematics)<!-- ; currently also a personal page -->
         </td>
     </tr>
 </table>
@@ -371,19 +259,20 @@ Message:
 <!--
                 <a href="https://github.com/georgydunaev/foundations/releases/tag/FirstRelease" target="_top">[github prerelease]</a>(not available)<br>
 -->
-<table>
+<table class="tableList">
     <tr>
-        <td align="right" width="75px">
+        <th>
 <!-- "https://github.com/georgydunaev/foundations/releases/download/FirstRelease/001_foundations.pdf" -->
                 <a href=
                 "https://raw.githubusercontent.com/georgydunaev/variousreleases/refs/heads/main/foundations.pdf"
-                target="_top">[PDF]</a>
-        </td>
+                target="_top"><strike>[PDF]</strike></a>
+        </th>
         <td>                
-                 (request via email)
+                 (a draft is currently availble only via request by email)
         </td>
     </tr>
 </table>
+
 <!-- it is too early for the draft to be published -->
             </li>
             <li>
@@ -449,13 +338,13 @@ Message:
         <ul>
             <li>
             Mechanisation of a recursion theorem:<br>
-<table>
+<table class="tableList">
     <tr>
-        <td align="right" width="75px"><!-- 13% -->
+        <th><!-- 13% -->
                 <a href="https://isa-afp.org/entries/Recursion-Addition.html" target="_top">
                 [link]
                 </a>
-        </td>
+        </th>
         <td>
                 <strong>Recursion Theorem in ZF</strong>, Archive of Formal Proofs, May 2020.
         </td>
@@ -464,13 +353,13 @@ Message:
             </li>
             <li>
             Declaration of the proof assistant project goals:<br>
-<table>
+<table class="tableList">
     <tr>
-        <td align="right" width="75px">
+        <th>
                 <a href="https://ai4math.de/publications/the-obelisk-proof-assistant/" target="_top">
                 [link]
                 </a>
-        </td>
+        </th>
         <td>
         (a publication about the project)
         </td>
@@ -518,13 +407,13 @@ Message:
         <ul>
             <li>
             Outdated personal page:<br>
-<table>
+<table class="tableList">
     <tr>
-        <td align="right" width="75px">
+        <th>
             <a href="https://mathandcomp.wordpress.com/" target="_top">
             [link]
             </a>
-        </td>
+        </th>
         <td>
             (descriptions of my GitHub repositories)
         </td>
