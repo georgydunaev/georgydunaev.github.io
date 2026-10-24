@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# Acceptance verification across all 140 Portfolio tickets
+# Acceptance verification across all 145 Portfolio tickets
 import sys
 from pathlib import Path
 
 pdir = Path(__file__).resolve().parent.parent
 tickets = list((pdir / "tickets").glob("*.md"))
-assert len(tickets) == 140, f"Expected 140 tickets, found {len(tickets)}"
+assert len(tickets) == 145, f"Expected 145 tickets, found {len(tickets)}"
 print(f"[ACCEPTANCE PASS] Portfolio project has all {len(tickets)} verified tickets.")
