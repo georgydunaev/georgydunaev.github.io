@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgy Dunaev — Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-front-bg: #ffffff;
+      --card-back-bg: #0f172a;
+      --primary: #1e3a8a;
+      --accent: #2563eb;
+      --cyan: #06b6d4;
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      color: #e2e8f0;
+    }
+
+    .header-nav {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .header-nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .header-nav a:hover {
+      color: #38bdf8;
+    }
+
+    .hint {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 3D Card Container */
+    .card-scene {
+      width: 425px;
+      height: 275px;
+      perspective: 1200px;
+      cursor: pointer;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 14px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(37, 99, 235, 0.2);
+    }
+
+    .card.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      overflow: hidden;
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Front side */
+    .card-front {
+      background: var(--card-front-bg);
+      color: var(--text-dark);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .front-top {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .card-name {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .card-role {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.01em;
+    }
+
+    .card-degrees {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .divider {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb 0%, #06b6d4 100%);
+      border-radius: 2px;
+      margin: 0.75rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 0.8rem;
+      row-gap: 0.35rem;
+      font-size: 0.76rem;
+      line-height: 1.3;
+    }
+
+    .contact-label {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-val a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+    }
+
+    .contact-val a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* Back side */
+    .card-back {
+      background: linear-gradient(135deg, #090e1a 0%, #172554 100%);
+      color: var(--text-light);
+      transform: rotateY(180deg);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      position: relative;
+    }
+
+    .back-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.3rem;
+    }
+
+    .back-logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .back-tagline {
+      font-size: 0.72rem;
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    .back-tech {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.68rem;
+      color: #cbd5e1;
+      text-align: center;
+      line-height: 1.4;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .back-link {
+      text-align: center;
+    }
+
+    .back-link a {
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      transition: all 0.2s;
+    }
+
+    .back-link a:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+    }
+
+    .actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+    }
+
+    .btn-outline:hover {
+      background: #1e293b;
+      border-color: #64748b;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .header-nav, .hint, .actions {
+        display: none;
+      }
+      .card-scene {
+        width: 85mm;
+        height: 55mm;
+        margin: 0 auto;
+        page-break-after: always;
+      }
+      .card {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-nav">
+    <a href="index.html">← Back to Portfolio</a>
+  </div>
+
+  <div class="card-scene" onclick="document.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <!-- FRONT FACE -->
+      <div class="card-face card-front">
+        <div class="front-top">
+          <div class="card-name">Georgy Dunaev</div>
+          <div class="card-role">Software Engineer &amp; Formal Verification Specialist</div>
+          <div class="card-degrees">M.Sc. Mathematics · M.Sc. Computer Science</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="contact-grid">
+          <span class="contact-label">Email</span>
+          <span class="contact-val"><a href="mailto:georgedunaev@gmail.com">georgedunaev@gmail.com</a></span>
+
+          <span class="contact-label">Web</span>
+          <span class="contact-val"><a href="https://georgydunaev.github.io" target="_blank">georgydunaev.github.io</a></span>
+
+          <span class="contact-label">Project</span>
+          <span class="contact-val"><a href="https://obeliskproofassistant.github.io" target="_blank">obeliskproofassistant.github.io</a></span>
+
+          <span class="contact-label">Location</span>
+          <span class="contact-val" style="font-size:0.75rem; color:#475569;">Berlin / Potsdam, Germany</span>
+        </div>
+      </div>
+
+      <!-- BACK FACE -->
+      <div class="card-face card-back">
+        <div class="back-brand">
+          <div class="back-logo">Obelisk Proof Assistant</div>
+          <div class="back-tagline">Rigorous Mathematical Foundations · Zero Implicit Computation</div>
+        </div>
+
+        <div class="back-tech">
+          OCaml · Standard ML (Poly/ML, CakeML) · Rocq (Coq) · Isabelle · Lean 4 · C++<br>
+          <span style="color:#94a3b8; font-size:0.62rem;">Interactive Theorem Proving · High-Assurance Systems · Compilers</span>
+        </div>
+
+        <div class="back-link">
+          <a href="https://obeliskproofassistant.github.io" target="_blank">obeliskproofassistant.github.io</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint">
+    <span>💡 Click or tap card to flip front / back</span>
+  </div>
+
+  <div class="actions">
+    <a href="business_card.pdf" class="btn btn-primary" download>📄 Download Print-Ready PDF</a>
+    <button class="btn btn-outline" onclick="window.print()">🖨️ Print Card</button>
+  </div>
+
+</body>
+</html>
