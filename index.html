@@ -248,6 +248,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#math">Mathematics</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="business_card.html" target="_blank">Business Card</a></li>
@@ -377,6 +378,85 @@
             <span class="tech-tag">Isabelle/HOL</span>
             <span class="tech-tag">Category Theory</span>
             <span class="tech-tag">HoTT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATHEMATICAL RESEARCH & FOUNDATIONS -->
+    <section id="math">
+      <div class="section-header">
+        <span class="section-tag">Pure Mathematics &amp; Logic</span>
+        <h2 class="section-title">Mathematical Research &amp; Formal Foundations</h2>
+      </div>
+
+      <div class="grid grid-2">
+        <!-- Math 1: Tagged Pairs -->
+        <div class="card">
+          <div>
+            <span class="card-badge">Original Construction · Lean 4 Verified</span>
+            <h3 class="card-title">Dunaev Tagged Pairs &amp; Lists for Proper Classes</h3>
+            <p class="card-desc">
+              Resolves the classical limitation of Kuratowski pairing where proper classes cannot be paired without "phantom partners":
+              <code>&lang;A, B&rang;<sub>tag</sub> = inj<sub>1</sub>(A) &cup; inj<sub>2</sub>(B)</code>.
+              Unconditional left and right projections <code>&pi;<sub>1</sub></code> and <code>&pi;<sub>2</sub></code> were machine-checked in Lean 4 with 0 errors.
+            </p>
+          </div>
+          <div class="card-tags">
+            <span class="tech-tag">Lean 4</span>
+            <span class="tech-tag">Proper Classes</span>
+            <span class="tech-tag">Pairing Axioms</span>
+          </div>
+        </div>
+
+        <!-- Math 2: AFP Recursion Theorem -->
+        <div class="card">
+          <div>
+            <span class="card-badge">Archive of Formal Proofs · Isabelle/ZF</span>
+            <h3 class="card-title">Recursion Theorem in ZF</h3>
+            <p class="card-desc">
+              Published peer-reviewed mechanization of the transfinite recursion theorem following Hrbacek and Jech in the Archive of Formal Proofs.
+              Establishes rigorous foundations for modeling Peano arithmetic and primitive recursion inside axiomatic set theory.
+            </p>
+          </div>
+          <div class="card-tags">
+            <span class="tech-tag">Isabelle/ZF</span>
+            <span class="tech-tag">AFP</span>
+            <span class="tech-tag">Transfinite Recursion</span>
+          </div>
+        </div>
+
+        <!-- Math 3: Category Theory & Yoneda -->
+        <div class="card">
+          <div>
+            <span class="card-badge">Category Theory · Formal Proofs</span>
+            <h3 class="card-title">Categorical Semantics &amp; The Yoneda Lemma</h3>
+            <p class="card-desc">
+              Monograph and formal developments exploring contextual categories, Yoneda embedding, and functorial semantics towards
+              categorical models of Homotopy Type Theory (HoTT) using the UniMath library.
+            </p>
+          </div>
+          <div class="card-tags">
+            <span class="tech-tag">Category Theory</span>
+            <span class="tech-tag">Yoneda Lemma</span>
+            <span class="tech-tag">HoTT</span>
+          </div>
+        </div>
+
+        <!-- Math 4: Metamathematics & Incompleteness -->
+        <div class="card">
+          <div>
+            <span class="card-badge">Mathematical Logic · Metatheory</span>
+            <h3 class="card-title">Gödel Incompleteness &amp; Löb's Theorem</h3>
+            <p class="card-desc">
+              Mechanized proofs in Rocq (Coq) and Isabelle of classical first-order logic soundness/completeness, the Diagonal Lemma,
+              Löb's theorem, and reflective internal provability predicates.
+            </p>
+          </div>
+          <div class="card-tags">
+            <span class="tech-tag">Rocq / Coq</span>
+            <span class="tech-tag">Löb's Theorem</span>
+            <span class="tech-tag">Provability Logic</span>
           </div>
         </div>
       </div>
