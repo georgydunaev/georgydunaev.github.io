@@ -251,6 +251,7 @@
         <li><a href="#math">Mathematics</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="interactive_diagrams.html" target="_blank">Diagrams</a></li>
         <li><a href="business_card.html" target="_blank">Business Card</a></li>
         <li><a href="CV_EN.pdf" class="nav-btn" download>CV (PDF)</a></li>
         <li><button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌓</button></li>
@@ -259,6 +260,15 @@
   </nav>
 
   <div class="container">
+
+    <!-- FAST SEARCH WIDGET -->
+    <div class="search-box-wrapper" style="position: relative; max-width: 520px; margin: 1.5rem auto 0; z-index: 90;">
+      <div style="position: relative; display: flex; align-items: center;">
+        <input type="text" id="search-input" placeholder="🔍 Search publications, axioms, code, CV assets..." style="width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 9999px; color: var(--text-main); font-size: 0.88rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--highlight)'" onblur="setTimeout(() => { if (!this.value) this.style.borderColor='var(--card-border)'; }, 200)">
+        <span style="position: absolute; left: 0.9rem; color: var(--text-muted); pointer-events: none;">🔍</span>
+      </div>
+      <div id="search-results" style="display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); backdrop-filter: blur(12px); max-height: 380px; overflow-y: auto; z-index: 1000;"></div>
+    </div>
 
     <!-- HERO SECTION -->
     <section class="hero" id="about" style="border-top: none;">
@@ -619,7 +629,11 @@
   </footer>
 
   <script src="js/theme_toggle.js"></script>
+  <script src="js/search.js"></script>
   <script>
+    if (window.initSearch) {
+      window.initSearch('search-input', 'search-results');
+    }
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').catch(() => {});
