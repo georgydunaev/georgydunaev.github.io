@@ -1,13 +1,18 @@
-/* Georgy Dunaev Academic Portfolio & Interactive Foundations Stylesheet */
+/*
+  georgydunaev.github.io/css/style.css
+  Global Stylesheet & CSS Custom Properties for Georgy Dunaev Portfolio
+*/
+
 :root {
   --primary: #1e3a8a;
   --primary-dark: #0f172a;
   --accent: #2563eb;
   --accent-light: #60a5fa;
-  --accent-purple: #8b5cf6;
   --accent-hover: #38bdf8;
+  --accent-purple: #a855f7;
   --cyan: #0284c7;
   --bg: #0b0f19;
+  --bg-primary: #0b0f19;
   --bg-card: rgba(17, 24, 39, 0.75);
   --card-bg: rgba(17, 24, 39, 0.75);
   --border-color: rgba(255, 255, 255, 0.08);
@@ -20,50 +25,17 @@
   --tag-border: rgba(37, 99, 235, 0.35);
 }
 
-[data-theme="light"] {
-  --bg: #f8fafc;
-  --bg-card: #ffffff;
-  --card-bg: #ffffff;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --card-border: rgba(0, 0, 0, 0.1);
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --code-bg: #f1f5f9;
-  --highlight: #0284c7;
-  --tag-bg: rgba(37, 99, 235, 0.08);
-  --tag-border: rgba(37, 99, 235, 0.25);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   background-color: var(--bg);
   color: var(--text-main);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.65;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.2) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(2, 132, 199, 0.12) 0px, transparent 50%);
-  background-attachment: fixed;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 16px;
-}
-
-h1, h2, h3, h4 {
-  color: var(--text-main);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
-}
-
-p {
-  color: var(--text-muted);
-  margin-bottom: 1rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
 }
 
 a {
@@ -79,21 +51,4 @@ a:hover {
 
 code, pre {
   font-family: 'JetBrains Mono', monospace;
-  background: var(--code-bg);
-  border-radius: 4px;
-}
-
-code {
-  padding: 2px 6px;
-  font-size: 0.9em;
-}
-
-.diagram-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 24px;
-  text-align: center;
-  backdrop-filter: blur(8px);
 }
