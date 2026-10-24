@@ -1,0 +1,16 @@
+{
+  "name": "Georgy Dunaev Portfolio",
+  "short_name": "GD Portfolio",
+  "description": "Georgy Dunaev - Formal Methods, Interactive Theorem Proving & Mathematical Foundations",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1f1e24",
+  "theme_color": "#7b58cf",
+  "icons": [
+    {
+      "src": "/assets/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Category Theory Commutative Diagrams · Georgy Dunaev</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .diagram-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    svg.commutative {
+      max-width: 100%;
+      height: auto;
+      margin: 16px auto;
+    }
+    .node-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      fill: var(--text-main);
+    }
+    .arrow-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      fill: var(--accent-hover);
+    }
+    .arrow-line {
+      stroke: var(--accent-purple);
+      stroke-width: 2;
+      marker-end: url(#arrow);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width: 900px; margin: 40px auto; padding: 0 16px;">
+    <div style="margin-bottom: 20px;">
+      <a href="index.html" style="color: var(--accent-purple); text-decoration: none;">&larr; Back to Portfolio</a>
+    </div>
+
+    <h1>Interactive Category Theory Commutative Diagrams</h1>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">
+      Visualizations of core category-theoretic structures, functorial mappings, and natural transformations formalized in Georgy Dunaev's mathematical foundations research.
+    </p>
+
+    <!-- Diagram 1: Yoneda Lemma Naturality -->
+    <div class="diagram-box">
+      <h3>1. The Yoneda Lemma: Naturality Square</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        For any morphism $f: A \to B$, the natural transformation $\alpha: \mathcal{C}(A, -) \Rightarrow F$ commutes with post-composition:
+      </p>
+      <svg class="commutative" width="400" height="240" viewBox="0 0 400 240">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#7b58cf"/>
+          </marker>
+        </defs>
+        <!-- Nodes -->
+        <text x="80" y="60" class="node-text" text-anchor="middle">C(A, A)</text>
+        <text x="320" y="60" class="node-text" text-anchor="middle">F(A)</text>
+        <text x="80" y="180" class="node-text" text-anchor="middle">C(A, B)</text>
+        <text x="320" y="180" class="node-text" text-anchor="middle">F(B)</text>
+        <!-- Horizontal Arrows -->
+        <line x1="130" y1="55" x2="270" y2="55" class="arrow-line"/>
+        <text x="200" y="45" class="arrow-text" text-anchor="middle">α_A</text>
+        <line x1="130" y1="175" x2="270" y2="175" class="arrow-line"/>
+        <text x="200" y="165" class="arrow-text" text-anchor="middle">α_B</text>
+        <!-- Vertical Arrows -->
+        <line x1="80" y1="75" x2="80" y2="155" class="arrow-line"/>
+        <text x="50" y="120" class="arrow-text" text-anchor="middle">f ∘ -</text>
+        <line x1="320" y1="75" x2="320" y2="155" class="arrow-line"/>
+        <text x="350" y="120" class="arrow-text" text-anchor="middle">F(f)</text>
+      </svg>
+      <div style="background: var(--bg-primary); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; color: #86efac;">
+        F(f)(α_A(id_A)) = α_B(f ∘ id_A) = α_B(f)
+      </div>
+    </div>
+
+    <!-- Diagram 2: Functor Composition & Associativity -->
+    <div class="diagram-box">
+      <h3>2. Functor Composition Law</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Commuting triangle for composition $g \circ f$ mapped through functor $F: \mathcal{C} \to \mathcal{D}$:
+      </p>
+      <svg class="commutative" width="400" height="220" viewBox="0 0 400 220">
+        <text x="70" y="170" class="node-text" text-anchor="middle">F(A)</text>
+        <text x="330" y="170" class="node-text" text-anchor="middle">F(B)</text>
+        <text x="200" y="50" class="node-text" text-anchor="middle">F(C)</text>
+        <line x1="100" y1="165" x2="300" y2="165" class="arrow-line"/>
+        <text x="200" y="185" class="arrow-text" text-anchor="middle">F(f)</text>
+        <line x1="320" y1="145" x2="220" y2="65" class="arrow-line"/>
+        <text x="285" y="100" class="arrow-text" text-anchor="middle">F(g)</text>
+        <line x1="80" y1="145" x2="180" y2="65" class="arrow-line"/>
+        <text x="115" y="100" class="arrow-text" text-anchor="middle">F(g ∘ f)</text>
+      </svg>
+      <div style="background: var(--bg-primary); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; color: #86efac;">
+        F(g ∘ f) = F(g) ∘ F(f)
+      </div>
+    </div>
+  </div>
+</body>
+</html>

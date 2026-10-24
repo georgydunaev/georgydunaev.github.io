@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Georgy Dunaev — Mathematical Logic &amp; Formal Methods Research</title>
+    <link>https://georgydunaev.github.io</link>
+    <description>Formal verification, interactive theorem proving, set-theoretic foundations, and category theory.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://georgydunaev.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Recursion Theorem in ZF Formalized in Isabelle/ZF</title>
+      <link>https://georgydunaev.github.io#publications</link>
+      <guid>https://georgydunaev.github.io#afp-recursion-zf</guid>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+      <description>Peer-reviewed formalization published in the Archive of Formal Proofs detailing transfinite recursion using Dunaev tagged pairs.</description>
+    </item>
+
+    <item>
+      <title>The Obelisk Proof Assistant Architecture and Morse-Kelley Class Theory</title>
+      <link>https://obeliskproofassistant.github.io</link>
+      <guid>https://obeliskproofassistant.github.io#architecture</guid>
+      <pubDate>Thu, 15 Aug 2024 00:00:00 GMT</pubDate>
+      <description>Design of a standalone theorem prover kernel in Standard ML with verified Gentzen sequent calculus and de Bruijn indices.</description>
+    </item>
+
+    <item>
+      <title>The Anti-Vibe Coding Manifesto: The Ten Inviolable Laws of Verification</title>
+      <link>https://georgydunaev.github.io/antivibecoding</link>
+      <guid>https://georgydunaev.github.io/antivibecoding#manifesto</guid>
+      <pubDate>Sat, 24 Oct 2026 12:00:00 GMT</pubDate>
+      <description>A foundational argument contrasting unverified probabilistic vibe coding with rigorous formal verification and property testing.</description>
+    </item>
+  </channel>
+</rss>
