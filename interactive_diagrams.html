@@ -3,105 +3,371 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Category Theory Commutative Diagrams · Georgy Dunaev</title>
+  <title>Interactive Category Theory Commutative Diagrams · Georgy Dunaev</title>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     .diagram-box {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 24px;
-      margin-bottom: 24px;
-      text-align: center;
+      margin-bottom: 28px;
+      position: relative;
     }
-    svg.commutative {
-      max-width: 100%;
-      height: auto;
+    .diagram-controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .diag-btn {
+      background: rgba(37, 99, 235, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #93c5fd;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.2s;
+    }
+    .diag-btn:hover, .diag-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #38bdf8;
+    }
+    svg.interactive-svg {
+      display: block;
       margin: 16px auto;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      user-select: none;
+      touch-action: none;
+    }
+    .node-group {
+      cursor: grab;
+    }
+    .node-group:active {
+      cursor: grabbing;
+    }
+    .node-circle {
+      fill: #1e293b;
+      stroke: #38bdf8;
+      stroke-width: 2px;
+      transition: fill 0.2s, stroke 0.2s;
+    }
+    .node-group:hover .node-circle {
+      fill: #0369a1;
+      stroke: #7dd3fc;
     }
     .node-text {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
-      fill: var(--text-main);
+      fill: #f8fafc;
+      pointer-events: none;
     }
     .arrow-text {
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
-      fill: var(--accent-hover);
+      font-weight: 600;
+      fill: #38bdf8;
+      cursor: pointer;
     }
     .arrow-line {
-      stroke: var(--accent-purple);
-      stroke-width: 2;
-      marker-end: url(#arrow);
+      stroke: #64748b;
+      stroke-width: 2.2;
+      transition: stroke 0.3s, stroke-width 0.3s;
+    }
+    .arrow-line.highlight-path1 {
+      stroke: #10b981;
+      stroke-width: 3.5;
+    }
+    .arrow-line.highlight-path2 {
+      stroke: #f59e0b;
+      stroke-width: 3.5;
+    }
+    .status-panel {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+    .status-panel strong {
+      color: #f8fafc;
+    }
+    .status-highlight {
+      color: #10b981;
+      font-weight: 700;
     }
   </style>
 </head>
 <body>
   <div class="container" style="max-width: 900px; margin: 40px auto; padding: 0 16px;">
     <div style="margin-bottom: 20px;">
-      <a href="index.html" style="color: var(--accent-purple); text-decoration: none;">&larr; Back to Portfolio</a>
+      <a href="index.html" style="color: var(--accent-light); text-decoration: none; font-size: 0.9rem;">&larr; Back to Portfolio</a>
     </div>
 
     <h1>Interactive Category Theory Commutative Diagrams</h1>
-    <p style="color: var(--text-muted); margin-bottom: 30px;">
-      Visualizations of core category-theoretic structures, functorial mappings, and natural transformations formalized in Georgy Dunaev's mathematical foundations research.
+    <p style="color: var(--text-muted); margin-bottom: 25px;">
+      Direct manipulation of categorical structures, functorial diagrams, and natural transformations formalized in Georgy Dunaev's mathematical foundations and Lean 4 audit files. <strong>Drag any node</strong> to observe topological preservation, or <strong>click a path button</strong> to verify commutativity.
     </p>
 
     <!-- Diagram 1: Yoneda Lemma Naturality -->
-    <div class="diagram-box">
+    <div class="diagram-box" id="diagram-yoneda">
       <h3>1. The Yoneda Lemma: Naturality Square</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin: 6px 0 16px 0;">
         For any morphism $f: A \to B$, the natural transformation $\alpha: \mathcal{C}(A, -) \Rightarrow F$ commutes with post-composition:
       </p>
-      <svg class="commutative" width="400" height="240" viewBox="0 0 400 240">
+
+      <div class="diagram-controls">
+        <button class="diag-btn active" onclick="highlightYoneda('both')">Verify Commutativity (All Paths)</button>
+        <button class="diag-btn" onclick="highlightYoneda('path1')">Trace Upper Path: α_B ∘ (f ∘ -)</button>
+        <button class="diag-btn" onclick="highlightYoneda('path2')">Trace Lower Path: F(f) ∘ α_A</button>
+        <button class="diag-btn" onclick="resetYoneda()">Reset Positions</button>
+      </div>
+
+      <svg id="svg-yoneda" class="interactive-svg" width="500" height="280" viewBox="0 0 500 280">
         <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 10 5 L 0 9 z" fill="#7b58cf"/>
+          <marker id="arrow-neutral" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+          </marker>
+          <marker id="arrow-path1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+          </marker>
+          <marker id="arrow-path2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b"/>
           </marker>
         </defs>
+
+        <!-- Arrows -->
+        <g id="yoneda-arrows"></g>
         <!-- Nodes -->
-        <text x="80" y="60" class="node-text" text-anchor="middle">C(A, A)</text>
-        <text x="320" y="60" class="node-text" text-anchor="middle">F(A)</text>
-        <text x="80" y="180" class="node-text" text-anchor="middle">C(A, B)</text>
-        <text x="320" y="180" class="node-text" text-anchor="middle">F(B)</text>
-        <!-- Horizontal Arrows -->
-        <line x1="130" y1="55" x2="270" y2="55" class="arrow-line"/>
-        <text x="200" y="45" class="arrow-text" text-anchor="middle">α_A</text>
-        <line x1="130" y1="175" x2="270" y2="175" class="arrow-line"/>
-        <text x="200" y="165" class="arrow-text" text-anchor="middle">α_B</text>
-        <!-- Vertical Arrows -->
-        <line x1="80" y1="75" x2="80" y2="155" class="arrow-line"/>
-        <text x="50" y="120" class="arrow-text" text-anchor="middle">f ∘ -</text>
-        <line x1="320" y1="75" x2="320" y2="155" class="arrow-line"/>
-        <text x="350" y="120" class="arrow-text" text-anchor="middle">F(f)</text>
+        <g id="yoneda-nodes"></g>
       </svg>
-      <div style="background: var(--bg-primary); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; color: #86efac;">
-        F(f)(α_A(id_A)) = α_B(f ∘ id_A) = α_B(f)
+
+      <div class="status-panel" id="yoneda-status">
+        <strong>Theorem (Yoneda Commutativity):</strong> <span class="status-highlight">F(f)(α_A(id_A)) = α_B(f ∘ id_A) = α_B(f)</span><br>
+        <em>Status:</em> Both paths commute in Set. Every natural transformation is uniquely determined by α_A(id_A).
       </div>
     </div>
 
-    <!-- Diagram 2: Functor Composition & Associativity -->
-    <div class="diagram-box">
-      <h3>2. Functor Composition Law</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">
-        Commuting triangle for composition $g \circ f$ mapped through functor $F: \mathcal{C} \to \mathcal{D}$:
+    <!-- Diagram 2: Functor Composition Triangle -->
+    <div class="diagram-box" id="diagram-functor">
+      <h3>2. Functor Composition &amp; Associativity</h3>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin: 6px 0 16px 0;">
+        Covariant functor $F: \mathcal{C} \to \mathcal{D}$ preserves composition: $F(g \circ f) = F(g) \circ F(f)$.
       </p>
-      <svg class="commutative" width="400" height="220" viewBox="0 0 400 220">
-        <text x="70" y="170" class="node-text" text-anchor="middle">F(A)</text>
-        <text x="330" y="170" class="node-text" text-anchor="middle">F(B)</text>
-        <text x="200" y="50" class="node-text" text-anchor="middle">F(C)</text>
-        <line x1="100" y1="165" x2="300" y2="165" class="arrow-line"/>
-        <text x="200" y="185" class="arrow-text" text-anchor="middle">F(f)</text>
-        <line x1="320" y1="145" x2="220" y2="65" class="arrow-line"/>
-        <text x="285" y="100" class="arrow-text" text-anchor="middle">F(g)</text>
-        <line x1="80" y1="145" x2="180" y2="65" class="arrow-line"/>
-        <text x="115" y="100" class="arrow-text" text-anchor="middle">F(g ∘ f)</text>
+
+      <div class="diagram-controls">
+        <button class="diag-btn active" onclick="highlightFunctor('both')">Verify Commutativity</button>
+        <button class="diag-btn" onclick="highlightFunctor('composed')">Direct Arrow: F(g ∘ f)</button>
+        <button class="diag-btn" onclick="highlightFunctor('factor')">Factored Path: F(g) ∘ F(f)</button>
+        <button class="diag-btn" onclick="resetFunctor()">Reset Positions</button>
+      </div>
+
+      <svg id="svg-functor" class="interactive-svg" width="500" height="260" viewBox="0 0 500 260">
+        <g id="functor-arrows"></g>
+        <g id="functor-nodes"></g>
       </svg>
-      <div style="background: var(--bg-primary); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; color: #86efac;">
-        F(g ∘ f) = F(g) ∘ F(f)
+
+      <div class="status-panel" id="functor-status">
+        <strong>Functor Axiom:</strong> <span class="status-highlight">F(g ∘ f) = F(g) ∘ F(f)</span> with <span class="status-highlight">F(id_A) = id_{F(A)}</span><br>
+        <em>Verification:</em> Preserves identity and composition laws under the Curry-Howard morphism mapping.
       </div>
     </div>
   </div>
+
+  <script>
+    // --- Interactive Commutative Diagram Engine with Draggable Nodes ---
+
+    function createDiagram(svgId, nodesDef, edgesDef, statusId) {
+      const svg = document.getElementById(svgId);
+      const arrowsG = svg.querySelector('g[id$="-arrows"]');
+      const nodesG = svg.querySelector('g[id$="-nodes"]');
+      const statusEl = document.getElementById(statusId);
+
+      const nodes = JSON.parse(JSON.stringify(nodesDef));
+      let activeDragNode = null;
+      let dragOffset = { x: 0, y: 0 };
+      let highlightMode = 'both';
+
+      function updateEdges() {
+        arrowsG.innerHTML = '';
+        edgesDef.forEach(e => {
+          const from = nodes[e.from];
+          const to = nodes[e.to];
+          const dx = to.x - from.x;
+          const dy = to.y - from.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist === 0) return;
+
+          const r = 26; // Node radius padding
+          const x1 = from.x + (dx / dist) * r;
+          const y1 = from.y + (dy / dist) * r;
+          const x2 = to.x - (dx / dist) * r;
+          const y2 = to.y - (dy / dist) * r;
+
+          let marker = 'url(#arrow-neutral)';
+          let strokeClass = 'arrow-line';
+
+          if (highlightMode === 'both') {
+            if (e.path === 1) { strokeClass += ' highlight-path1'; marker = 'url(#arrow-path1)'; }
+            else if (e.path === 2) { strokeClass += ' highlight-path2'; marker = 'url(#arrow-path2)'; }
+          } else if (highlightMode === 'path1' && e.path === 1) {
+            strokeClass += ' highlight-path1'; marker = 'url(#arrow-path1)';
+          } else if (highlightMode === 'path2' && e.path === 2) {
+            strokeClass += ' highlight-path2'; marker = 'url(#arrow-path2)';
+          }
+
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', x1);
+          line.setAttribute('y1', y1);
+          line.setAttribute('x2', x2);
+          line.setAttribute('y2', y2);
+          line.setAttribute('class', strokeClass);
+          line.setAttribute('marker-end', marker);
+          arrowsG.appendChild(line);
+
+          // Arrow Label
+          const midX = (x1 + x2) / 2 + (e.labelOffsetX || 0);
+          const midY = (y1 + y2) / 2 + (e.labelOffsetY || 0);
+          const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('x', midX);
+          text.setAttribute('y', midY);
+          text.setAttribute('class', 'arrow-text');
+          text.setAttribute('text-anchor', 'middle');
+          text.textContent = e.label;
+          arrowsG.appendChild(text);
+        });
+      }
+
+      function updateNodes() {
+        nodesG.innerHTML = '';
+        Object.keys(nodes).forEach(k => {
+          const n = nodes[k];
+          const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          g.setAttribute('class', 'node-group');
+          g.setAttribute('transform', `translate(${n.x}, ${n.y})`);
+
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('r', '24');
+          circle.setAttribute('class', 'node-circle');
+
+          const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('y', '5');
+          text.setAttribute('text-anchor', 'middle');
+          text.setAttribute('class', 'node-text');
+          text.textContent = n.label;
+
+          g.appendChild(circle);
+          g.appendChild(text);
+
+          g.addEventListener('pointerdown', evt => {
+            activeDragNode = k;
+            const rect = svg.getBoundingClientRect();
+            dragOffset.x = (evt.clientX - rect.left) * (svg.viewBox.baseVal.width / rect.width) - n.x;
+            dragOffset.y = (evt.clientY - rect.top) * (svg.viewBox.baseVal.height / rect.height) - n.y;
+            g.setPointerCapture(evt.pointerId);
+          });
+
+          g.addEventListener('pointermove', evt => {
+            if (activeDragNode === k) {
+              const rect = svg.getBoundingClientRect();
+              const svgX = (evt.clientX - rect.left) * (svg.viewBox.baseVal.width / rect.width) - dragOffset.x;
+              const svgY = (evt.clientY - rect.top) * (svg.viewBox.baseVal.height / rect.height) - dragOffset.y;
+              nodes[k].x = Math.max(30, Math.min(svg.viewBox.baseVal.width - 30, svgX));
+              nodes[k].y = Math.max(30, Math.min(svg.viewBox.baseVal.height - 30, svgY));
+              g.setAttribute('transform', `translate(${nodes[k].x}, ${nodes[k].y})`);
+              updateEdges();
+            }
+          });
+
+          g.addEventListener('pointerup', evt => {
+            if (activeDragNode === k) {
+              activeDragNode = null;
+              g.releasePointerCapture(evt.pointerId);
+            }
+          });
+
+          nodesG.appendChild(g);
+        });
+      }
+
+      function init() {
+        updateNodes();
+        updateEdges();
+      }
+
+      init();
+
+      return {
+        setHighlight: (mode) => {
+          highlightMode = mode;
+          updateEdges();
+        },
+        reset: () => {
+          Object.assign(nodes, JSON.parse(JSON.stringify(nodesDef)));
+          updateNodes();
+          updateEdges();
+        }
+      };
+    }
+
+    // Yoneda Square Configuration
+    const yonedaNodesDef = {
+      CAA: { x: 100, y: 70, label: "C(A,A)" },
+      FA:  { x: 400, y: 70, label: "F(A)" },
+      CAB: { x: 100, y: 210, label: "C(A,B)" },
+      FB:  { x: 400, y: 210, label: "F(B)" }
+    };
+
+    const yonedaEdgesDef = [
+      { from: 'CAA', to: 'CAB', label: 'f ∘ -', path: 1, labelOffsetX: -28, labelOffsetY: 0 },
+      { from: 'CAB', to: 'FB',  label: 'α_B',   path: 1, labelOffsetX: 0, labelOffsetY: 18 },
+      { from: 'CAA', to: 'FA',  label: 'α_A',   path: 2, labelOffsetX: 0, labelOffsetY: -12 },
+      { from: 'FA',  to: 'FB',  label: 'F(f)',  path: 2, labelOffsetX: 28, labelOffsetY: 0 }
+    ];
+
+    const yonedaDiag = createDiagram('svg-yoneda', yonedaNodesDef, yonedaEdgesDef, 'yoneda-status');
+
+    function highlightYoneda(mode) {
+      yonedaDiag.setHighlight(mode);
+    }
+    function resetYoneda() {
+      yonedaDiag.reset();
+    }
+
+    // Functor Triangle Configuration
+    const functorNodesDef = {
+      FA: { x: 90,  y: 190, label: "F(A)" },
+      FB: { x: 410, y: 190, label: "F(B)" },
+      FC: { x: 250, y: 60,  label: "F(C)" }
+    };
+
+    const functorEdgesDef = [
+      { from: 'FA', to: 'FB', label: 'F(f)',     path: 2, labelOffsetX: 0, labelOffsetY: 18 },
+      { from: 'FB', to: 'FC', label: 'F(g)',     path: 2, labelOffsetX: 26, labelOffsetY: -8 },
+      { from: 'FA', to: 'FC', label: 'F(g ∘ f)', path: 1, labelOffsetX: -28, labelOffsetY: -8 }
+    ];
+
+    const functorDiag = createDiagram('svg-functor', functorNodesDef, functorEdgesDef, 'functor-status');
+
+    function highlightFunctor(mode) {
+      if (mode === 'composed') functorDiag.setHighlight('path1');
+      else if (mode === 'factor') functorDiag.setHighlight('path2');
+      else functorDiag.setHighlight('both');
+    }
+    function resetFunctor() {
+      functorDiag.reset();
+    }
+  </script>
 </body>
 </html>
