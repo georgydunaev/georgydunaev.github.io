@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Georgy Dunaev
+N:Dunaev;Georgy;;;
+TITLE:Software Engineer & Formal Verification Specialist
+ORG:Independent / University of Potsdam
+EMAIL;TYPE=INTERNET,PREF:georgedunaev@gmail.com
+EMAIL;TYPE=INTERNET:CV@obelisk.mozmail.com
+URL;TYPE=PREF:https://georgydunaev.github.io
+URL:https://obeliskproofassistant.github.io
+URL:https://github.com/georgydunaev
+URL:https://linkedin.com/in/georgy-dunaev
+ADR;TYPE=HOME:;;Berlin / Potsdam;;;Germany
+NOTE:Mathematician and software engineer specializing in formal verification, Lean 4, Rocq, Isabelle/ZF, OCaml, and Standard ML.
+END:VCARD
