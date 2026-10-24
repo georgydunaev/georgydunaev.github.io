@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://georgydunaev.github.io/sitemap.xml
