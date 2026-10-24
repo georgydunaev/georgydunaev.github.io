@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anti-Vibe Coding — The Manifesto for Formally Verified Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #38bdf8;
+      --accent: #2563eb;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.65;
+      padding: 2rem 1.5rem;
+    }
+
+    .container { max-width: 950px; margin: 0 auto; }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.lead {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-outline { background: rgba(30, 41, 59, 0.7); color: #e2e8f0; border: 1px solid var(--card-border); }
+    .btn-outline:hover { background: rgba(51, 65, 85, 0.8); }
+
+    .slide-embed {
+      margin: 3rem 0; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--card-border); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      height: 520px; background: #000;
+    }
+    iframe { width: 100%; height: 100%; border: none; }
+
+    .card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+    }
+
+    h2 { font-size: 1.6rem; margin-bottom: 1rem; color: #fff; }
+
+    .laws-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;
+    }
+    .law-item {
+      background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 8px;
+      border: 1px solid var(--card-border); font-size: 0.88rem;
+    }
+    .law-item strong { color: var(--primary); display: block; margin-bottom: 0.3rem; }
+
+    /* Calculator */
+    .calc-slider { width: 100%; margin: 0.5rem 0 1rem; }
+    .score-badge { font-size: 1.8rem; font-weight: 800; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+
+    footer {
+      text-align: center; padding-top: 3rem; border-top: 1px solid var(--card-border);
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .laws-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="badge">A Manifesto for Machine-Checked Rigor</div>
+      <h1>Anti-Vibe Coding</h1>
+      <p class="lead">
+        Rejecting uninspected generative hallucination. Embracing mathematical foundations, independent proof certificates, and formally verified software systems.
+      </p>
+      <div class="actions">
+        <a href="output_html/index.html" class="btn btn-primary" target="_blank">📽️ Launch Fullscreen Presentation</a>
+        <a href="tools/roi_calculator.html" class="btn btn-primary" target="_blank">💰 Verification ROI Calculator</a>
+        <a href="https://obeliskproofassistant.github.io" class="btn btn-outline" target="_blank">🏛️ Obelisk Proof Assistant</a>
+        <a href="https://georgydunaev.github.io" class="btn btn-outline" target="_blank">👤 Author: Georgy Dunaev</a>
+      </div>
+    </header>
+
+    <!-- Embedded Presentation -->
+    <div class="slide-embed">
+      <iframe src="output_html/index.html" title="Antivibecoding Slides"></iframe>
+    </div>
+
+    <!-- The 10 Inviolable Laws -->
+    <div class="card">
+      <h2>The Ten Inviolable Laws of Anti-Vibe Coding</h2>
+      <p style="color:var(--text-muted);">Fundamental principles for building mission-critical software in the post-generative era.</p>
+
+      <div class="laws-grid">
+        <div class="law-item">
+          <strong>1. Machine-Checked Certificate</strong>
+          No software artifact is correct without an explicit, machine-checkable proof.
+        </div>
+        <div class="law-item">
+          <strong>2. Zero Implicit Computation</strong>
+          Proof checkers must not hide logic behind opaque normalisation heuristics.
+        </div>
+        <div class="law-item">
+          <strong>3. Minimal TCB Kernel</strong>
+          Trusted kernels must remain small (~20k LOC) so they can be audited by humans.
+        </div>
+        <div class="law-item">
+          <strong>4. Deterministic Replay</strong>
+          Every proof step and build phase must produce bit-for-bit reproducible outcomes.
+        </div>
+        <div class="law-item">
+          <strong>5. Explicit Assumptions</strong>
+          All axioms, premises, and FFIs must be explicitly quantified and tracked.
+        </div>
+        <div class="law-item">
+          <strong>6. Invariant Primacy</strong>
+          Formulate state invariants and specifications before writing or accepting code.
+        </div>
+        <div class="law-item">
+          <strong>7. Rejection of the Vibe</strong>
+          If an AI generates code that you cannot formally specify, reject it immediately.
+        </div>
+        <div class="law-item">
+          <strong>8. Proof Stability</strong>
+          Proofs must not break due to cosmetic refactoring or minor runtime updates.
+        </div>
+        <div class="law-item">
+          <strong>9. Universal Blame</strong>
+          Errors must point directly to the exact logical premise that was violated.
+        </div>
+        <div class="law-item">
+          <strong>10. High-Assurance Longevity</strong>
+          Build software to last decades, grounded in immutable mathematical truths.
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Risk Diagnostic -->
+    <div class="card">
+      <h2>Vibe Coding Risk Diagnostic</h2>
+      <p style="color:var(--text-muted); margin-bottom:1.5rem;">Estimate your project's fragility to stochastic hallucination and silent invariant breakage.</p>
+
+      <div>
+        <label>Proportion of unvetted AI-generated code in production:</label>
+        <input type="range" min="0" max="100" value="30" class="calc-slider" id="aiSlider" oninput="updateScore()">
+        <span id="aiVal" style="color:var(--primary); font-weight:600;">30%</span>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <label>Formal specification / invariant test coverage:</label>
+        <input type="range" min="0" max="100" value="60" class="calc-slider" id="specSlider" oninput="updateScore()">
+        <span id="specVal" style="color:var(--primary); font-weight:600;">60%</span>
+      </div>
+
+      <div style="margin-top:2rem; padding:1.25rem; background:rgba(15,23,42,0.8); border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div style="font-size:0.85rem; color:var(--text-muted); text-transform:uppercase;">Anti-Vibe Readiness Score</div>
+          <div class="score-badge" id="scoreDisplay">75 / 100</div>
+          <div id="riskCategory" style="font-size:0.9rem; color:#10b981; font-weight:600;">Good: Substantial Invariant Protection</div>
+        </div>
+        <div>
+          <img src="badges/badge_verified.svg" alt="Anti-Vibe Verified Badge" style="max-width:200px;">
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Georgy Dunaev · <a href="https://georgydunaev.github.io">georgydunaev.github.io</a> · Berlin / Potsdam, Germany</p>
+    </footer>
+  </div>
+
+  <script>
+    function updateScore() {
+      const ai = parseInt(document.getElementById('aiSlider').value);
+      const spec = parseInt(document.getElementById('specSlider').value);
+      document.getElementById('aiVal').innerText = ai + '%';
+      document.getElementById('specVal').innerText = spec + '%';
+
+      // Anti-vibe score calculation
+      let score = Math.max(5, Math.min(100, Math.round(spec * 0.7 + (100 - ai) * 0.3)));
+      document.getElementById('scoreDisplay').innerText = score + ' / 100';
+
+      const catEl = document.getElementById('riskCategory');
+      if (score >= 80) {
+        catEl.innerText = "Excellent: High Assurance Anti-Vibe Compliant";
+        catEl.style.color = "#10b981";
+      } else if (score >= 50) {
+        catEl.innerText = "Moderate: Needs Stricter Formal State Invariants";
+        catEl.style.color = "#38bdf8";
+      } else {
+        catEl.innerText = "Critical Vibe Debt: High Risk of Silent Breakage";
+        catEl.style.color = "#ef4444";
+      }
+    }
+  </script>
+
+</body>
+</html>
