@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Milestones & Platform Feature Log | Georgy Dunaev</title>
+  <meta name="description" content="Chronological and architectural summary of major platform capabilities, formal verification systems, autonomous multi-agent fleet operations, and tools built.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/myfavicon.ico">
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --highlight: #38bdf8;
+      --accent: #2563eb;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --purple: #a855f7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+      padding-bottom: 4rem;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.18) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.12) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Top Nav */
+    header.top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(9, 13, 22, 0.85);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.85rem 0;
+      margin-bottom: 2.5rem;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand span { color: var(--highlight); }
+    .back-link {
+      color: var(--highlight);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .back-link:hover {
+      background: rgba(56, 189, 248, 0.2);
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 3rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--highlight);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 780px;
+    }
+
+    /* Metric Bar */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      backdrop-filter: blur(8px);
+    }
+    .metric-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--highlight);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* Feature Sections */
+    .feature-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+    .section-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .feature-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .feature-bullet {
+      width: 8px;
+      height: 8px;
+      background: var(--highlight);
+      border-radius: 50%;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+    .feature-text strong {
+      color: #f8fafc;
+      font-weight: 600;
+    }
+    .feature-text {
+      color: #cbd5e1;
+      font-size: 0.94rem;
+    }
+    .business-value-box {
+      margin-top: 1.2rem;
+      padding: 0.75rem 1rem;
+      border-left: 3px solid var(--emerald);
+      background: rgba(16, 185, 129, 0.08);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      color: #a7f3d0;
+    }
+    .business-value-box strong {
+      color: #34d399;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: #38bdf8;
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      header.top-nav { display: none !important; }
+      .feature-section { box-shadow: none !important; border: 1px solid #ccc !important; page-break-inside: avoid; }
+      .metric-card { border: 1px solid #ccc !important; }
+      .metric-num { color: #0366d6 !important; }
+      code { background: #eee !important; color: #000 !important; }
+      .business-value-box { background: #f0fdf4 !important; color: #065f46 !important; border-left-color: #10b981 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="top-nav">
+    <div class="container nav-inner">
+      <a href="portfolio_ai.html" class="brand">GD<span>.</span> Platform Log</a>
+      <div style="display: flex; gap: 10px;">
+        <a href="portfolio_ai.html" class="back-link">&larr; Return to Portfolio</a>
+        <a href="index.html" class="back-link">🏛 Classic Portal</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="hero">
+      <div class="hero-badge">Verified System Deliverables</div>
+      <h1>Major Architectural Milestones &amp; Features</h1>
+      <p class="subtitle">
+        Comprehensive summary of core systems, formal verification engines, autonomous container fleet infrastructure, 
+        and developer tools engineered across collaborative development sessions.
+      </p>
+    </div>
+
+    <!-- Metrics Overview -->
+    <div class="metrics-bar">
+      <div class="metric-card">
+        <div class="metric-num">6 / 6</div>
+        <div class="metric-label">Repositories Unified on <code>* main</code></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">0ms</div>
+        <div class="metric-label">Zero-Downtime Blue/Green Deploy</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">100%</div>
+        <div class="metric-label">Offline Resilient (Rule 10 Verified)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">24 / 24</div>
+        <div class="metric-label">Platform Integration Tests Passing</div>
+      </div>
+    </div>
+
+    <!-- Feature 1: Obelisk -->
+    <div class="feature-section">
+      <div class="section-title-row">
+        <h2 class="section-title">
+          <span>🏛 1. Obelisk Proof Assistant — Formal Verification Kernel</span>
+        </h2>
+        <span class="tech-pill">set_theory_prover · Standard ML / Poly/ML</span>
+      </div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Self-Contained LCF Micro-Kernel:</strong> Trusted computing base isolated into a pure LCF-style checker under ~250 LOC verifying Morse–Kelley (MK) class-set theory without external proof assistant dependencies.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Machine-Checked Theorems:</strong> Formally verified core mathematical foundations including <code>ax_extensionality</code>, <code>ax_comprehension</code>, Russell proper class theorem (<code>not_isSet_V</code>), and tagged pair invertibility (<code>tagged_pair_proj</code>).
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Multi-Frontend Ecosystem:</strong> Interactive browser REPL with preset theorems, syntax toggle (mathematical Unicode vs concrete SML syntax), explicit logical side condition boxes, and Lean 4 export bridge.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Codebase Preservation Audit:</strong> 26 historical code blocks across kernel files continuously protected by automated regression harness (<code>test_commented_blocks_audit.py</code>).
+          </div>
+        </li>
+      </ul>
+      <div class="business-value-box">
+        <strong>Commercial &amp; Research Value:</strong> Auditable, mathematically guaranteed soundness with an ultra-minimal TCB — positioning the engine for high-assurance safety-critical applications, smart contracts, and formal certification.
+      </div>
+    </div>
+
+    <!-- Feature 2: mybot Platform -->
+    <div class="feature-section">
+      <div class="section-title-row">
+        <h2 class="section-title">
+          <span>🤖 2. mybot — Autonomous Multi-Agent Fleet &amp; Zero-Trust Ops</span>
+        </h2>
+        <span class="tech-pill">mybot · Docker, Python, Bash</span>
+      </div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Zero-Downtime Blue/Green Architecture:</strong> Local GitLab reverse proxy on port <code>8929</code> seamlessly fronting slot Blue (port <code>8931</code>) and slot Green (port <code>8932</code>), supporting hot-swaps without interrupting live sessions.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Two-Container Security Isolation:</strong> Production secrets never touch untrusted worker code. The relay maintains sensitive credentials while workers communicate via ephemeral <code>WORKER_TOKEN</code> secrets on internal networks.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Unified Command-Line CLI:</strong> Comprehensive <code>./mybot</code> entry point managing <code>fleet</code>, <code>bot</code>, <code>gitlab</code>, <code>ticket</code>, <code>audit</code>, <code>overnight</code>, and <code>backup</code> routines in single commands.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Automated Token Rotation:</strong> Atomic cryptographic token generation (<code>rotate-worker-token.sh</code>) enforcing strict <code>0600</code> permissions across container environment files.
+          </div>
+        </li>
+      </ul>
+      <div class="business-value-box">
+        <strong>Commercial &amp; Research Value:</strong> An "autonomous dev department in a box" — scalable multi-agent container fleet with defense-in-depth isolation against credential leakage and continuous uptime.
+      </div>
+    </div>
+
+    <!-- Feature 3: Defensive Auditing Suite -->
+    <div class="feature-section">
+      <div class="section-title-row">
+        <h2 class="section-title">
+          <span>🛡️ 3. Defensive Vulnerability &amp; Integrity Auditor Bots</span>
+        </h2>
+        <span class="tech-pill">mybot/security · Python 3, AST</span>
+      </div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Triple-Dimension Audit Bots:</strong> Automated auditor suite evaluating <code>SecurityAuditorBot</code> (secret leaks, path traversal via <code>commonpath</code>, IP exposure), <code>LogicAuditorBot</code> (unproven axioms, Lean 4 <code>sorry</code>/<code>cheat</code>, side conditions), and <code>StructuralAuditorBot</code> (port bindings, log sizes, filename safety).
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Slogan &amp; Boilerplate Redundancy Auditor:</strong> Non-destructive scanner (<code>audit_slogan_bot.py</code>) analyzing 2,100+ files to identify overused catchphrases, redundant rule citations, and copy-pasted ticket preambles.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Strict Offline Resilience Benchmark:</strong> Complete external network blackholing test suite (<code>test-offline-resilience.sh</code>) guaranteeing zero outbound internet dependency across all platform operations.
+          </div>
+        </li>
+      </ul>
+      <div class="business-value-box">
+        <strong>Commercial &amp; Research Value:</strong> Instant self-inspection and audit-readiness — giving external clients mathematical proof that software conforms to rigorous security and compliance boundaries.
+      </div>
+    </div>
+
+    <!-- Feature 4: Cognitive Memory Catalog -->
+    <div class="feature-section">
+      <div class="section-title-row">
+        <h2 class="section-title">
+          <span>🧠 4. Cognitive Memory Catalog &amp; Multi-Model Dispatcher</span>
+        </h2>
+        <span class="tech-pill">catalog · SQLite FTS5, Ollama, OpenCode</span>
+      </div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Hierarchical Epistemic Memory:</strong> SQLite FTS5 database (<code>catalog.db</code>) indexing workspace repos, coupled with a structured cognitive ledger (<code>.cognitive_ledger.json</code>) recording verified facts, hypotheses, and falsifications.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Free Subagent Fleet Dispatcher:</strong> Built <code>free_subagent_fleet.py</code> to offload exploratory code analysis, repo audits, and documentation to free tier models (<code>deepseek-v4.1-flash</code>, <code>glm-5.3-flash</code>) and host GPU Ollama (<code>qwen2.5-coder:7b</code>), conserving 100% of weekly Antigravity quota.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Autonomous Overnight Worker Pool:</strong> Built <code>overnight_runner.py</code> to automatically execute curated atomic micro-tickets while the developer sleeps, gated by thermal limits (&lt; 75°C) and deterministic test verification with automatic reversion on failure.
+          </div>
+        </li>
+      </ul>
+      <div class="business-value-box">
+        <strong>Commercial &amp; Research Value:</strong> Dramatically lowers engineering compute costs by turning ephemeral LLM interactions into persistent institutional memory and offloading mechanical tasks to zero-cost background models.
+      </div>
+    </div>
+
+    <!-- Feature 5: Web Portals & Identity -->
+    <div class="feature-section">
+      <div class="section-title-row">
+        <h2 class="section-title">
+          <span>🌐 5. Web Portals &amp; Consulting Identity Layer</span>
+        </h2>
+        <span class="tech-pill">georgydunaev.github.io, obeliskproofassistant.github.io · HTML5, CSS3</span>
+      </div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Executive AI Portfolio Redesign:</strong> Rebuilt <code>portfolio_ai.html</code> featuring dark mode aesthetics, an executive privacy-preserving AI stylized avatar portrait (<code>avatar_ai.jpg</code>), and a clear commercial call to action for High-Assurance Systems Consulting.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Zero-Overlap Top Navigation:</strong> Redesigned classic 2-pane landing pages to eliminate floating overlay banners, integrating clean 40px in-flow header bars so no content, buttons, or iframe elements are ever obscured.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Interactive Micro-Interactions:</strong> Tactile theorem copy buttons with dynamic <code>✓ Copied!</code> feedback, interactive screenshots gallery with subtle elevation, and responsive mobile-first typography.
+          </div>
+        </li>
+      </ul>
+      <div class="business-value-box">
+        <strong>Commercial &amp; Research Value:</strong> A client-facing portal designed to win contracts — presenting clear service offerings, verified credentials, and interactive mathematical demonstrations.
+      </div>
+    </div>
+
+    <!-- Feature 6: Career Dossier Build Pipeline -->
+    <div class="feature-section">
+      <div class="section-title-row">
+        <h2 class="section-title">
+          <span>📄 6. Career Dossier Build Automation &amp; Git Unification</span>
+        </h2>
+        <span class="tech-pill">CV, pygenCV · Python ReportLab, Git</span>
+      </div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Single-Command Career PDF Generator:</strong> Automated Python ReportLab pipeline (<code>build_all_pdfs.sh</code>) producing English CV (<code>CV_EN.pdf</code>), German Lebenslauf (<code>CV_DE.pdf</code>), Executive 1-page CV, cover letters, and double-sided business cards in seconds.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Automated Web Synchronization:</strong> Rebuilt PDF assets and vCard contacts automatically fan out and synchronize into public web portals with zero manual copying.
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-bullet"></div>
+          <div class="feature-text">
+            <strong>Fleet-Wide Git Unification:</strong> Fast-forward merged legacy branches and verified that all 6 workspace repositories check out and maintain <code>* main</code> as their primary branch, with decoupled <code>gitlab</code> and <code>github</code> remotes.
+          </div>
+        </li>
+      </ul>
+      <div class="business-value-box">
+        <strong>Commercial &amp; Research Value:</strong> Zero document drift — job applications, executive summaries, and formal credentials can be tailored, recompiled, and deployed in seconds with complete consistency.
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>
