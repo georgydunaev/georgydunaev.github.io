@@ -1,9 +1,76 @@
-<div class="card" style="margin-bottom: 1.5rem;">
-  <span class="card-badge">Archive of Formal Proofs (Isabelle/ZF)</span>
-  <h3 class="card-title">Recursion Theorem in ZF (Peer-Reviewed)</h3>
-  <p class="card-desc">
-    Formalized and machine-checked proof of the classical Recursion Theorem following Hrbacek and Jech, published in the
-    <a href="https://www.isa-afp.org/entries/Recursion-Addition.html" target="_blank" style="color:var(--highlight);">Archive of Formal Proofs</a>.
-    Models Peano arithmetic in axiomatic set theory and verifies the construction of primitive recursive operations on ordinals.
+<div class="card" style="margin-bottom: 1.5rem; border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 8px; padding: 1.25rem; background: rgba(15, 23, 42, 0.75);">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+    <div>
+      <span class="card-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 3px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;">Archive of Formal Proofs · Isabelle/ZF (Peer-Reviewed)</span>
+      <h3 class="card-title" style="margin: 6px 0 2px 0; font-size: 1.15rem; color: #f1f5f9;">Recursion Theorem in ZF</h3>
+    </div>
+    <div style="display: flex; gap: 6px; align-items: center;">
+      <button type="button" class="btn-rec-mode" onclick="toggleRecSyntax(this)" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #38bdf8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: 600;">✨ Unicode / Concrete</button>
+      <button type="button" class="btn-rec-copy" onclick="copyRecThm(this)" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: 600;">📋 Copy</button>
+    </div>
+  </div>
+
+  <p class="card-desc" style="font-size: 0.88rem; color: #94a3b8; margin-bottom: 10px; line-height: 1.5;">
+    Formalized and machine-checked proof of the classical Recursion Theorem following Hrbacek &amp; Jech, published in the
+    <a href="https://www.isa-afp.org/entries/Recursion-Addition.html" target="_blank" style="color:#38bdf8; text-decoration: none; font-weight: 600;">Archive of Formal Proofs (Recursion-Addition) ↗</a>.
+    Establishes existence and uniqueness of primitive recursive operations on natural numbers within axiomatic set theory.
   </p>
+
+  <!-- Theorem Statement Box -->
+  <div style="background: rgba(9, 13, 22, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 10px 12px; margin-bottom: 10px; font-family: 'JetBrains Mono', Consolas, monospace;">
+    <div id="rec-stmt-u" style="color: #67e8f9; font-size: 0.88rem; line-height: 1.5;">
+      ∀ A a g. a ∈ A ∧ g ∈ (A × ℕ → A) ⟹ ∃! f ∈ (ℕ → A). f(0) = a ∧ (∀ n ∈ ℕ. f(succ(n)) = g(f(n), n))
+    </div>
+    <div id="rec-stmt-c" style="display: none; color: #c4b5fd; font-size: 0.84rem; line-height: 1.5;">
+      theorem nat_rec_exists_unique:
+        assumes "a ∈ A" and "g ∈ A × nat → A"
+        shows "∃!f ∈ nat → A. f ` 0 = a ∧ (∀n ∈ nat. f ` (succ(n)) = g ` ⟨f ` n, n⟩)"
+    </div>
+  </div>
+
+  <!-- Explicit Side Conditions Callout -->
+  <div style="background: rgba(217, 119, 6, 0.12); border-left: 3px solid #d97706; padding: 6px 10px; border-radius: 0 4px 4px 0; font-size: 0.8rem; color: #fde68a; font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; line-height: 1.4;">
+    <strong>Explicit Side Conditions:</strong>
+    1. <code>a ∈ A</code> (Base value well-typed in codomain set A)<br/>
+    2. <code>g ∈ A × nat → A</code> (Step recursion operator is total and well-defined function)
+  </div>
+
+  <div class="card-tags" style="display: flex; gap: 6px; flex-wrap: wrap;">
+    <span class="tech-tag" style="background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; color: #cbd5e1;">Isabelle/ZF</span>
+    <span class="tech-tag" style="background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; color: #cbd5e1;">AFP Peer-Reviewed</span>
+    <span class="tech-tag" style="background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; color: #cbd5e1;">Hrbacek-Jech Recursion</span>
+  </div>
 </div>
+
+<script>
+  let recMode = 'unicode';
+  function toggleRecSyntax(btn) {
+    recMode = (recMode === 'unicode') ? 'concrete' : 'unicode';
+    const u = document.getElementById('rec-stmt-u');
+    const c = document.getElementById('rec-stmt-c');
+    if (recMode === 'unicode') {
+      u.style.display = 'block';
+      c.style.display = 'none';
+      btn.innerText = '✨ Unicode View';
+    } else {
+      u.style.display = 'none';
+      c.style.display = 'block';
+      btn.innerText = '💻 Isabelle/ZF Syntax';
+    }
+  }
+
+  function copyRecThm(btn) {
+    const text = (recMode === 'unicode') 
+      ? document.getElementById('rec-stmt-u').innerText 
+      : document.getElementById('rec-stmt-c').innerText;
+    navigator.clipboard.writeText(text.trim()).then(() => {
+      const orig = btn.innerText;
+      btn.innerText = '✓ Copied!';
+      btn.style.color = '#34d399';
+      setTimeout(() => {
+        btn.innerText = orig;
+        btn.style.color = '#94a3b8';
+      }, 1600);
+    });
+  }
+</script>
