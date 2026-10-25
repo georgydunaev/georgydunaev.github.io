@@ -41,5 +41,24 @@ class TestPortfolioIntegrity(unittest.TestCase):
         content = index_html.read_text(encoding="utf-8")
         self.assertIn("Obelisk.lean", content, "index.html must link to Obelisk.lean formal proof artifact")
 
+    def test_portal_switch_parity(self):
+        index_html = REPO_DIR / "index.html"
+        ai_html = REPO_DIR / "portfolio_ai.html"
+        classic_html = REPO_DIR / "classic.html"
+        alias_ai_html = REPO_DIR / "ai.html"
+
+        self.assertTrue(index_html.exists() and ai_html.exists() and classic_html.exists() and alias_ai_html.exists())
+        
+        index_content = index_html.read_text(encoding="utf-8")
+        self.assertIn("portal-switch-banner", index_content)
+        self.assertIn("portfolio_ai.html", index_content)
+        self.assertIn("Classic (Author)", index_content)
+
+        ai_content = ai_html.read_text(encoding="utf-8")
+        self.assertIn("portal-switch-banner", ai_content)
+        self.assertIn("index.html", ai_content)
+        self.assertIn("Modern AI", ai_content)
+        self.assertIn("Classic Author Portal", ai_content)
+
 if __name__ == "__main__":
     unittest.main()
