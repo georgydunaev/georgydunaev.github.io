@@ -140,6 +140,13 @@
       margin: 0.75rem 0;
     }
 
+    .front-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -147,6 +154,31 @@
       row-gap: 0.35rem;
       font-size: 0.76rem;
       line-height: 1.3;
+      flex: 1;
+    }
+
+    .qr-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .qr-badge img {
+      width: 74px;
+      height: 74px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      padding: 2px;
+      background: #fff;
+    }
+
+    .qr-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .contact-label {
@@ -234,6 +266,37 @@
       border-color: #38bdf8;
     }
 
+    .back-qrs {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      margin: 0.1rem 0;
+    }
+
+    .back-qr-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+
+    .back-qr-card img {
+      width: 56px;
+      height: 56px;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .back-qr-label {
+      font-size: 0.52rem;
+      font-weight: 700;
+      color: #93c5fd;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .actions {
       margin-top: 2rem;
       display: flex;
@@ -283,16 +346,36 @@
         padding: 0;
       }
       .header-nav, .hint, .actions {
-        display: none;
+        display: none !important;
       }
       .card-scene {
         width: 85mm;
-        height: 55mm;
+        height: auto;
+        perspective: none;
         margin: 0 auto;
-        page-break-after: always;
       }
       .card {
+        transform: none !important;
+        transform-style: flat !important;
         box-shadow: none;
+        width: 85mm;
+        height: auto;
+      }
+      .card-face {
+        position: relative !important;
+        width: 85mm;
+        height: 55mm;
+        page-break-inside: avoid;
+        page-break-after: always;
+        border: 1px solid #cbd5e1;
+        box-sizing: border-box;
+      }
+      .card-front {
+        transform: none !important;
+      }
+      .card-back {
+        transform: none !important;
+        page-break-after: avoid;
       }
     }
   </style>
@@ -300,7 +383,7 @@
 <body>
 
   <div class="header-nav">
-    <a href="index.html">← Back to Portfolio</a>
+    <a href="index.html">← Back to CV &amp; Credentials</a> &nbsp;·&nbsp; <a href="../georgydunaev.github.io/index.html">Main Portfolio</a>
   </div>
 
   <div class="card-scene" onclick="document.querySelector('.card').classList.toggle('is-flipped')">
@@ -315,18 +398,28 @@
 
         <div class="divider"></div>
 
-        <div class="contact-grid">
-          <span class="contact-label">Email</span>
-          <span class="contact-val"><a href="mailto:georgedunaev@gmail.com">georgedunaev@gmail.com</a></span>
+        <div class="front-body">
+          <div class="contact-grid">
+            <span class="contact-label">Email</span>
+            <span class="contact-val"><a href="mailto:georgedunaev@gmail.com">georgedunaev@gmail.com</a></span>
 
-          <span class="contact-label">Web</span>
-          <span class="contact-val"><a href="https://georgydunaev.github.io" target="_blank">georgydunaev.github.io</a></span>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-val"><a href="https://www.linkedin.com/in/georgy-dunaev/" target="_blank">linkedin.com/in/georgy-dunaev</a></span>
 
-          <span class="contact-label">Project</span>
-          <span class="contact-val"><a href="https://obeliskproofassistant.github.io" target="_blank">obeliskproofassistant.github.io</a></span>
+            <span class="contact-label">Web</span>
+            <span class="contact-val"><a href="https://georgydunaev.github.io" target="_blank">georgydunaev.github.io</a></span>
 
-          <span class="contact-label">Location</span>
-          <span class="contact-val" style="font-size:0.75rem; color:#475569;">Berlin / Potsdam, Germany</span>
+            <span class="contact-label">Project</span>
+            <span class="contact-val"><a href="https://obeliskproofassistant.github.io" target="_blank">obeliskproofassistant.github.io</a></span>
+
+            <span class="contact-label">Location</span>
+            <span class="contact-val" style="font-size:0.75rem; color:#475569;">Berlin / Potsdam, Germany</span>
+          </div>
+
+          <div class="qr-badge">
+            <img src="images/hub_qr.svg" alt="QR Code to Digital Hub (links.html)">
+            <span class="qr-label">Digital Hub</span>
+          </div>
         </div>
       </div>
 
@@ -338,8 +431,19 @@
         </div>
 
         <div class="back-tech">
-          OCaml · Standard ML (Poly/ML, CakeML) · Rocq (Coq) · Isabelle · Lean 4 · C++<br>
+          OCaml · Standard ML · Rocq (Coq) · Isabelle · Lean 4 · C++<br>
           <span style="color:#94a3b8; font-size:0.62rem;">Interactive Theorem Proving · High-Assurance Systems · Compilers</span>
+        </div>
+
+        <div class="back-qrs">
+          <div class="back-qr-card">
+            <img src="images/hub_qr.svg" alt="Digital Hub QR Code">
+            <span class="back-qr-label">Digital Hub &amp; CVs</span>
+          </div>
+          <div class="back-qr-card">
+            <img src="images/linkedin_qr.svg" alt="LinkedIn Profile QR Code">
+            <span class="back-qr-label">LinkedIn Profile</span>
+          </div>
         </div>
 
         <div class="back-link">
@@ -353,8 +457,10 @@
     <span>💡 Click or tap card to flip front / back</span>
   </div>
 
-  <div class="actions">
-    <a href="business_card.pdf" class="btn btn-primary" download>📄 Download Print-Ready PDF</a>
+  <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+    <a href="business_card.pdf" class="btn btn-primary" download>📄 Download Dual-QR PDF (Print-Ready)</a>
+    <a href="business_card_classic.pdf" class="btn btn-outline" download>📄 Classic Edition PDF</a>
+    <a href="https://georgydunaev.github.io/links.html" target="_blank" class="btn btn-outline">🌐 View Digital Hub Page</a>
     <button class="btn btn-outline" onclick="window.print()">🖨️ Print Card</button>
   </div>
 
