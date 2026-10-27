@@ -77,6 +77,50 @@
 <link rel="shortcut icon" href="myfavicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 <link rel="manifest" href="site.webmanifest" />
+<!-- Ticket 001: Schema.org Person structured data (JSON-LD).
+     Canonical source of truth: assets/meta/person_schema.json
+     Keep this inline copy byte-identical to the canonical file;
+     tests/test_person_schema.py enforces parity. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Georgy Dunaev",
+  "jobTitle": "Software Engineer & Formal Verification Specialist",
+  "url": "https://georgydunaev.github.io",
+  "email": "georgedunaev@gmail.com",
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Potsdam"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Lomonosov Moscow State University"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Bauman Moscow State Technical University"
+    }
+  ],
+  "knowsAbout": [
+    "Formal Verification",
+    "Interactive Theorem Proving",
+    "Lean 4",
+    "Rocq (Coq)",
+    "Isabelle/ZF",
+    "Standard ML",
+    "OCaml",
+    "Mathematical Logic",
+    "Morse-Kelley Class Theory"
+  ],
+  "sameAs": [
+    "https://github.com/georgydunaev",
+    "https://linkedin.com/in/georgy-dunaev",
+    "https://obeliskproofassistant.github.io"
+  ]
+}
+</script>
 </head>
 <body class="indexbody">
 
