@@ -103,6 +103,14 @@
     .nav-links { display: flex; gap: 1.25rem; align-items: center; list-style: none; }
     .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--highlight); }
+    /* Ticket 020 — active section state driven by js/scroll_spy.js (aria-current="true" + .active) */
+    .nav-links a.active {
+      color: var(--highlight);
+      text-decoration: underline;
+      text-decoration-color: var(--highlight);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+    }
 
     .nav-btn {
       padding: 0.45rem 0.9rem; background: var(--tag-bg);
@@ -770,6 +778,7 @@
 
   <script src="js/theme_toggle.js"></script>
   <script src="js/search.js"></script>
+  <script src="js/scroll_spy.js" defer></script>
   <script>
     if (window.initSearch) {
       window.initSearch('search-input', 'search-results');
