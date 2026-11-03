@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+  AUTO-GENERATED / SYNCED FILE — DO NOT EDIT MANUALLY
+  Source: /ramdisk/antivibecoding/index.html
+  How to regenerate: cp /ramdisk/antivibecoding/index.html /ramdisk/georgydunaev.github.io/antivibecoding.html
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -181,6 +186,32 @@
         <div class="law-item">
           <strong>10. High-Assurance Longevity</strong>
           Build software to last decades, grounded in immutable mathematical truths.
+        </div>
+      </div>
+    </div>
+
+    <!-- Architectural Critique: Metamath vs Obelisk -->
+    <div class="card">
+      <h2>Architectural Critique: Metamath vs. Obelisk</h2>
+      <p style="color:var(--text-muted);">
+        While Metamath pioneered clean, hyperlinked theorem catalogs, its internal proof architecture suffers from four structural anti-patterns that Obelisk resolves at the root:
+      </p>
+      <div class="laws-grid">
+        <div class="law-item">
+          <strong>1. Local NFV/FFI vs. Global $d Variable Groups</strong>
+          Metamath couples unrelated statements via ambient disjoint-variable (<code>$d</code>) groups. Obelisk uses local, decidable boolean side conditions (<code>NFV</code> and <code>FFI</code>) scoped strictly to the inference rule.
+        </div>
+        <div class="law-item">
+          <strong>2. Self-Hosted CakeML/SML'97 Kernel vs. Python/C++</strong>
+          Instead of ad-hoc imperative string checkers in Python or C++, Obelisk enforces soundness via LCF abstract types in portable SML'97 compiled by the verified CakeML compiler.
+        </div>
+        <div class="law-item">
+          <strong>3. Algebraic ASTs vs. Formula-Building Spam</strong>
+          Metamath prints dozens of syntactic steps just to prove a formula is well-formed. Obelisk's SML algebraic datatypes (<code>Fm_Expre</code>, <code>Class_Expre</code>) guarantee well-formedness statically.
+        </div>
+        <div class="law-item">
+          <strong>4. Compact Proof Terms vs. Verbose Step Tables</strong>
+          Dumping hundreds of repetitive step-by-step RPN table rows hides mathematical structure. Obelisk represents proofs as concise LCF/Curry–Howard proof terms.
         </div>
       </div>
     </div>
