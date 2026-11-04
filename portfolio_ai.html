@@ -448,11 +448,18 @@
       <div class="section-header">
         <span class="section-tag">Pure Mathematics &amp; Logic</span>
         <h2 class="section-title">Mathematical Research &amp; Formal Foundations</h2>
+        <div class="topic-filter-bar" role="toolbar" aria-label="Filter research by topic" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
+          <button type="button" class="topic-filter-chip tech-tag" data-topic="all" aria-pressed="true" style="cursor:pointer;">All Topics</button>
+          <button type="button" class="topic-filter-chip tech-tag" data-topic="set-theory" aria-pressed="false" style="cursor:pointer;">Set Theory</button>
+          <button type="button" class="topic-filter-chip tech-tag" data-topic="isabelle-zf" aria-pressed="false" style="cursor:pointer;">Isabelle/ZF</button>
+          <button type="button" class="topic-filter-chip tech-tag" data-topic="formal-verification" aria-pressed="false" style="cursor:pointer;">Formal Verification</button>
+          <button type="button" class="topic-filter-chip tech-tag" data-topic="type-systems" aria-pressed="false" style="cursor:pointer;">Type Systems</button>
+        </div>
       </div>
 
       <div class="grid grid-2">
         <!-- Math 1: Tagged Pairs -->
-        <div class="card">
+        <div class="card publication-card" data-topics="set-theory,formal-verification" data-bibtex="@misc{dunaev2026obelisk, author={Dunaev, Georgy}, title={Dunaev Tagged Ordered Pairs and Machine-Checked Morse-Kelley Class Theory in Lean 4 and Standard ML}, year={2026}, url={https://obeliskproofassistant.github.io}}">
           <div>
             <span class="card-badge">Original Construction · Lean 4 Verified</span>
             <h3 class="card-title">Dunaev Tagged Pairs &amp; Lists for Proper Classes</h3>
@@ -461,8 +468,9 @@
               <code>&lang;A, B&rang;<sub>tag</sub> = inj<sub>1</sub>(A) &cup; inj<sub>2</sub>(B)</code>.
               Unconditional left and right projections <code>&pi;<sub>1</sub></code> and <code>&pi;<sub>2</sub></code> were machine-checked in Lean 4 with 0 errors.
             </p>
-            <div style="margin-top: 8px;">
+            <div style="margin-top: 8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
               <a href="https://github.com/georgydunaev/obeliskproofassistant.github.io/blob/main/Obelisk.lean" target="_blank" style="color:var(--highlight); font-size:0.82rem; font-family:'JetBrains Mono', monospace; text-decoration:none;">📄 View Machine-Checked Lean 4 Proof (Obelisk.lean) ↗</a>
+              <button type="button" class="btn-bibtex-copy tech-tag" data-bibtex-btn style="cursor:pointer;">📋 Copy BibTeX</button>
             </div>
           </div>
           <div class="card-tags">
@@ -473,7 +481,7 @@
         </div>
 
         <!-- Math 2: AFP Recursion Theorem -->
-        <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.25);">
+        <div class="card publication-card" data-topics="set-theory,isabelle-zf,formal-verification" data-bibtex="@article{Dunaev-AFP-2020, author={Georgy Dunaev}, title={Recursion Theorem in ZF}, journal={Archive of Formal Proofs}, year={2020}, issn={2150-914x}, url={https://www.isa-afp.org/entries/Recursion-Addition.html}}" style="border: 1px solid rgba(56, 189, 248, 0.25);">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
               <span class="card-badge">Archive of Formal Proofs · Isabelle/ZF (Peer-Reviewed)</span>
@@ -511,7 +519,7 @@
         </div>
 
         <!-- Math 3: Category Theory & Yoneda -->
-        <div class="card">
+        <div class="card publication-card" data-topics="type-systems,formal-verification" data-bibtex="@misc{dunaev2025yoneda, author={Dunaev, Georgy}, title={Categorical Semantics, Contextual Categories, and the Yoneda Lemma towards HoTT}, year={2025}, url={https://georgydunaev.github.io}}">
           <div>
             <span class="card-badge">Category Theory · Formal Proofs</span>
             <h3 class="card-title">Categorical Semantics &amp; The Yoneda Lemma</h3>
@@ -528,7 +536,7 @@
         </div>
 
         <!-- Math 4: Metamathematics & Incompleteness -->
-        <div class="card">
+        <div class="card publication-card" data-topics="formal-verification,type-systems" data-bibtex="@misc{dunaev2024loeb, author={Dunaev, Georgy}, title={Mechanized Gödel Incompleteness and Löb's Theorem in Rocq and Isabelle}, year={2024}, url={https://georgydunaev.github.io}}">
           <div>
             <span class="card-badge">Mathematical Logic · Metatheory</span>
             <h3 class="card-title">Gödel Incompleteness &amp; Löb's Theorem</h3>
@@ -541,6 +549,22 @@
             <span class="tech-tag">Rocq / Coq</span>
             <span class="tech-tag">Löb's Theorem</span>
             <span class="tech-tag">Provability Logic</span>
+          </div>
+        </div>
+
+        <!-- Math 5: Formulas-as-Types vs Proof-Term Compilation in MK/NBG (Ticket 701) -->
+        <div class="card publication-card" data-topics="set-theory,type-systems,formal-verification" data-bibtex="@misc{dunaev2026formulasastypes, author={Dunaev, Georgy}, title={Formulas-as-Types vs. Proof-Term Compilation in Morse-Kelley and NBG Class Theory}, year={2026}, url={https://obeliskproofassistant.github.io}}">
+          <div>
+            <span class="card-badge">Type Theory · NBG/MK Kernel</span>
+            <h3 class="card-title">Formulas-as-Types vs. Proof-Term Compilation in MK/NBG</h3>
+            <p class="card-desc">
+              In the Obelisk Higher-Order kernel, Morse–Kelley/NBG formulas serve as types (<code>formula &lt;Name&gt; = ...</code>) while proofs are explicit constructive &lambda;/eliminator terms (<code>theorem &lt;Name&gt; : &lt;Formula&gt; = &lt;ProofTerm&gt;</code>). Bidirectional sort checking separates <code>SetSort</code> from <code>ClassSort</code>, barring proper classes such as the Russell class <code>{x | x notin x} : ClassSort</code> from set-quantified comprehension and preventing Russell's Paradox by typing.
+            </p>
+          </div>
+          <div class="card-tags">
+            <span class="tech-tag">Formulas-as-Types</span>
+            <span class="tech-tag">ClassSort vs SetSort</span>
+            <span class="tech-tag">Russell's Paradox Prevention</span>
           </div>
         </div>
       </div>
@@ -779,6 +803,8 @@
   <script src="js/theme_toggle.js"></script>
   <script src="js/search.js"></script>
   <script src="js/scroll_spy.js" defer></script>
+  <script src="js/bibtex_copy.js" defer></script>
+  <script src="js/topic_filter.js" defer></script>
   <script>
     if (window.initSearch) {
       window.initSearch('search-input', 'search-results');
