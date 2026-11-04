@@ -474,14 +474,14 @@
 
       <div class="grid grid-2">
         <!-- Math 1: Tagged Pairs -->
-        <div class="card publication-card" data-topics="set-theory,formal-verification" data-bibtex="@misc{dunaev2026obelisk, author={Dunaev, Georgy}, title={Dunaev Tagged Ordered Pairs and Machine-Checked Morse-Kelley Class Theory in Lean 4 and Standard ML}, year={2026}, url={https://obeliskproofassistant.github.io}}">
+        <div class="card publication-card" data-topics="set-theory,formal-verification" data-bibtex="@misc{dunaev2026obelisk, author={Dunaev, Georgy}, title={Dunaev Tagged Ordered Pairs and Machine-Checked Morse-Kelley Class Theory in Standard ML}, year={2026}, url={https://obeliskproofassistant.github.io}}">
           <div>
-            <span class="card-badge">Original Construction · Lean 4 Verified</span>
+            <span class="card-badge">Original Construction · Standard ML Kernel Verified</span>
             <h3 class="card-title">Dunaev Tagged Pairs &amp; Lists for Proper Classes</h3>
             <p class="card-desc">
               Resolves the classical limitation of Kuratowski pairing where proper classes cannot be paired without "phantom partners":
-              <code>&lang;A, B&rang;<sub>tag</sub> = inj<sub>1</sub>(A) &cup; inj<sub>2</sub>(B)</code>.
-              Unconditional left and right projections <code>&pi;<sub>1</sub></code> and <code>&pi;<sub>2</sub></code> were machine-checked in Lean 4 with 0 errors.
+              <code>[A, B]<sub>D</sub> = mark(A, 0) &cup; mark(B, 1)</code>.
+              Unconditional left and right projections <code>pr1</code> and <code>pr2</code> are machine-checked in the Obelisk Standard ML kernel.
             </p>
             <div style="margin-top: 8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
               <a href="https://obeliskproofassistant.github.io/generated/manual.html#item-3.76" target="_blank" style="color:var(--highlight); font-size:0.82rem; font-family:'JetBrains Mono', monospace; text-decoration:none;">📖 View in Obelisk ML-Generated Manual (§3.76–3.78) ↗</a>
@@ -489,7 +489,7 @@
             </div>
           </div>
           <div class="card-tags">
-            <span class="tech-tag">Lean 4</span>
+            <span class="tech-tag">Standard ML</span>
             <span class="tech-tag">Proper Classes</span>
             <span class="tech-tag">Pairing Axioms</span>
           </div>
