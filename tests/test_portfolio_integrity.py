@@ -35,11 +35,11 @@ class TestPortfolioIntegrity(unittest.TestCase):
         content = bc_html.read_text(encoding="utf-8")
         self.assertIn("Candidate", content, "Degree must accurately state candidate status")
 
-    def test_lean4_audit_link(self):
+    def test_obelisk_manual_link(self):
         index_html = REPO_DIR / "index.html"
         self.assertTrue(index_html.exists(), "index.html must exist")
         content = index_html.read_text(encoding="utf-8")
-        self.assertIn("Obelisk.lean", content, "index.html must link to Obelisk.lean formal proof artifact")
+        self.assertIn("generated/manual.html", content, "index.html must link to Obelisk ML-Generated Manual")
 
     def test_portal_switch_parity(self):
         index_html = REPO_DIR / "index.html"
