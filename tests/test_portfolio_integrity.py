@@ -60,5 +60,20 @@ class TestPortfolioIntegrity(unittest.TestCase):
         self.assertIn("Modern AI", ai_content)
         self.assertIn("Classic Author Portal", ai_content)
 
+    def test_noscript_fallback_and_theme_transitions(self):
+        """Tickets 27455, 7437, 701: Verify <noscript> fallback, 200ms theme transitions, and research note links."""
+        style_css = (REPO_DIR / "css" / "style.css").read_text(encoding="utf-8")
+        self.assertIn("200ms", style_css)
+        self.assertIn(".noscript-banner", style_css)
+
+        for page_name in ("index.html", "portfolio_ai.html"):
+            content = (REPO_DIR / page_name).read_text(encoding="utf-8")
+            self.assertIn("<noscript>", content, f"{page_name} must contain a <noscript> fallback")
+            self.assertIn("noscript-banner", content, f"{page_name} must include .noscript-banner inside <noscript>")
+            self.assertIn("research/formula_as_type_vs_proof_term_mk_nbg.md", content)
+
+        note_path = REPO_DIR / "research" / "formula_as_type_vs_proof_term_mk_nbg.md"
+        self.assertTrue(note_path.exists(), "Research note for Ticket 701 must exist")
+
 if __name__ == "__main__":
     unittest.main()

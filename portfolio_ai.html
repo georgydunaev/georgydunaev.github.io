@@ -78,7 +78,16 @@
         radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.2) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(2, 132, 199, 0.12) 0px, transparent 50%);
       background-attachment: fixed;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 200ms ease, color 200ms ease;
+    }
+
+    .noscript-banner {
+      background: rgba(37, 99, 235, 0.14);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--text-main);
+      padding: 0.65rem 1.25rem;
+      font-size: 0.88rem;
+      text-align: center;
     }
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
@@ -209,9 +218,10 @@
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 
-    .card {
+    .card, .publication-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 14px; padding: 1.75rem; transition: all 0.25s ease;
+      border-radius: 14px; padding: 1.75rem;
+      transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
       display: flex; flex-direction: column; justify-content: space-between;
     }
     .card:hover { border-color: rgba(56, 189, 248, 0.3); transform: translateY(-3px); }
@@ -276,6 +286,11 @@
   </style>
 </head>
 <body>
+  <noscript>
+    <div class="noscript-banner">
+      JavaScript is disabled. All publications, formal verification artifacts (<a href="research/tagged_pairs_regularity.md">Dunaev Tagged Pairs</a>, <a href="research/formula_as_type_vs_proof_term_mk_nbg.md">Formulas-as-Types in MK/NBG</a>), and CV downloads (<a href="CV_EN.pdf">CV_EN.pdf</a>) remain accessible below.
+    </div>
+  </noscript>
 
   <!-- Navigation -->
   <nav>
@@ -556,10 +571,14 @@
         <div class="card publication-card" data-topics="set-theory,type-systems,formal-verification" data-bibtex="@misc{dunaev2026formulasastypes, author={Dunaev, Georgy}, title={Formulas-as-Types vs. Proof-Term Compilation in Morse-Kelley and NBG Class Theory}, year={2026}, url={https://obeliskproofassistant.github.io}}">
           <div>
             <span class="card-badge">Type Theory · NBG/MK Kernel</span>
-            <h3 class="card-title">Formulas-as-Types vs. Proof-Term Compilation in MK/NBG</h3>
+            <h3 class="card-title"><a href="research/formula_as_type_vs_proof_term_mk_nbg.md">Formulas-as-Types vs. Proof-Term Compilation in MK/NBG ↗</a></h3>
             <p class="card-desc">
               In the Obelisk Higher-Order kernel, Morse–Kelley/NBG formulas serve as types (<code>formula &lt;Name&gt; = ...</code>) while proofs are explicit constructive &lambda;/eliminator terms (<code>theorem &lt;Name&gt; : &lt;Formula&gt; = &lt;ProofTerm&gt;</code>). Bidirectional sort checking separates <code>SetSort</code> from <code>ClassSort</code>, barring proper classes such as the Russell class <code>{x | x notin x} : ClassSort</code> from set-quantified comprehension and preventing Russell's Paradox by typing.
             </p>
+            <div style="margin-top: 8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <a href="research/formula_as_type_vs_proof_term_mk_nbg.md" style="color:var(--highlight); font-size:0.82rem; font-family:'JetBrains Mono', monospace; text-decoration:none;">📄 Read Research Note (Formula-as-Type vs. Proof-Term Compilation) ↗</a>
+              <button type="button" class="btn-bibtex-copy tech-tag" data-bibtex-btn style="cursor:pointer;">📋 Copy BibTeX</button>
+            </div>
           </div>
           <div class="card-tags">
             <span class="tech-tag">Formulas-as-Types</span>
