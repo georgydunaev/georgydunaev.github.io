@@ -9,9 +9,15 @@ import xml.etree.ElementTree as ET
 REPO_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_DIR / "tools"))
 
-from generate_vcard_qr import generate_vcard_svg, load_vcard_payload, OUT_SVG  # noqa: E402
+try:
+    import qrcode  # noqa: F401
+    from generate_vcard_qr import generate_vcard_svg, load_vcard_payload, OUT_SVG  # noqa: E402
+    HAS_QRCODE = True
+except ImportError:
+    HAS_QRCODE = False
 
 
+@unittest.skipUnless(HAS_QRCODE, "qrcode package is required for vCard QR tests")
 class TestVCardQRGenerator(unittest.TestCase):
     def test_vcard_payload_structure(self):
         payload = load_vcard_payload()
