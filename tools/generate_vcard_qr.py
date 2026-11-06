@@ -8,8 +8,12 @@ Works 100% offline with zero network calls.
 """
 
 from pathlib import Path
-import qrcode
-import qrcode.image.svg
+try:
+    import qrcode
+    import qrcode.image.svg
+    HAS_QRCODE = True
+except ImportError:
+    HAS_QRCODE = False
 
 REPO_DIR = Path(__file__).resolve().parent.parent
 VCF_PATH = REPO_DIR / "georgy_dunaev.vcf"
@@ -40,6 +44,8 @@ def load_vcard_payload(vcf_path: Path = VCF_PATH) -> str:
 
 def generate_vcard_svg(output_path: Path = OUT_SVG, primary_color: str = "#1e293b") -> Path:
     """Generate scalable SVG QR code encoding the vCard payload."""
+    if not HAS_QRCODE:
+        raise RuntimeError("qrcode library is required. Install via: pip install qrcode")
     payload = load_vcard_payload()
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
