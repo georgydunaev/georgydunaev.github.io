@@ -9,7 +9,7 @@
 ---
 
 ## 1. Description & Rationale
-Syntax-highlighted code tabs for OCaml, SML, Lean 4, and Coq.
+Syntax-highlighted code tabs for OCaml, SML, Lean 4, and Rocq.
 
 This ticket is an essential component of the `georgydunaev.github.io` engineering and presentation roadmap. It establishes rigorous standards, elevates production quality, and directly advances the mission of creating publication-ready, mathematically sound software and career assets.
 
