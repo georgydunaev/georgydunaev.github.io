@@ -5,10 +5,10 @@
 	logallrefupdates = true
   sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh_my/githubpass_ed25519
 [remote "github"]
-	url = git@github.com:georgydunaev/foundations.git
+	url = git@github.com:georgydunaev/georgydunaev.github.io.git
 	fetch = +refs/heads/*:refs/remotes/github/*
 [remote "gitlab"]
-	url = http://192.168.0.3:8929/georgydunaev/foundations.git
+	url = http://192.168.0.3:8929/georgydunaev/georgydunaev.github.io.git
 	fetch = +refs/heads/*:refs/remotes/gitlab/*
 [push]
 	default = simple
@@ -19,7 +19,6 @@
 	name = G.D.
 	email = contact@obelisk.mozmail.com
   signingKey = /home/user/.ssh_my/githubpass_ed25519.pub
-  # signingKey = ~/.ssh_my/githubpass_ed25519.pub
 [gpg]
   format = ssh
 [commit]
@@ -28,4 +27,4 @@
 	pushDefault = github
 [branch "main"]
 	pushRemote = github
-#ln -fsT /botworkspace/foundations/config /botworkspace/foundations/.git/config
+#ln -fsT /botworkspace/georgydunaev.github.io/config /botworkspace/georgydunaev.github.io/.git/config
