@@ -5,14 +5,14 @@
       <h3 class="card-title" style="margin: 6px 0 2px 0; font-size: 1.15rem; color: #f1f5f9;">Recursion Theorem in ZF</h3>
     </div>
     <div style="display: flex; gap: 6px; align-items: center;">
-      <button type="button" class="btn-rec-mode" onclick="toggleRecSyntax(this)" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #38bdf8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: 600;">✨ Unicode / Concrete</button>
-      <button type="button" class="btn-rec-copy" onclick="copyRecThm(this)" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: 600;">📋 Copy</button>
+      <button type="button" class="btn-rec-mode" onclick="toggleRecSyntax(this)" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #38bdf8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: 600;">Unicode / Concrete</button>
+      <button type="button" class="btn-rec-copy" onclick="copyRecThm(this)" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: 600;">Copy</button>
     </div>
   </div>
 
   <p class="card-desc" style="font-size: 0.88rem; color: #94a3b8; margin-bottom: 10px; line-height: 1.5;">
     Formalized and machine-checked proof of the classical Recursion Theorem following Hrbacek &amp; Jech, published in the
-    <a href="https://www.isa-afp.org/entries/Recursion-Addition.html" target="_blank" style="color:#38bdf8; text-decoration: none; font-weight: 600;">Archive of Formal Proofs (Recursion-Addition) ↗</a>.
+    <a href="https://www.isa-afp.org/entries/Recursion-Addition.html" target="_blank" style="color:#38bdf8; text-decoration: none; font-weight: 600;">Archive of Formal Proofs (Recursion-Addition)</a>.
     Establishes existence and uniqueness of primitive recursive operations on natural numbers within axiomatic set theory.
   </p>
 
@@ -51,11 +51,11 @@
     if (recMode === 'unicode') {
       u.style.display = 'block';
       c.style.display = 'none';
-      btn.innerText = '✨ Unicode View';
+      btn.innerText = 'Unicode View';
     } else {
       u.style.display = 'none';
       c.style.display = 'block';
-      btn.innerText = '💻 Isabelle/ZF Syntax';
+      btn.innerText = 'Isabelle/ZF Syntax';
     }
   }
 

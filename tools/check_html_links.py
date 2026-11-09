@@ -20,14 +20,16 @@ def check_file_links(html_file: Path) -> int:
         return 1
 
     content = html_file.read_text(encoding="utf-8")
+    # Strip HTML comments to avoid false-positive hits on commented-out links
+    clean_content = re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
     # Matches href="..." and src="..."
-    matches = re.findall(r'(?:href|src)=["\']([^"\']+)["\']', content)
+    matches = re.findall(r'(?:href|src)=["\']([^"\']+)["\']', clean_content)
 
     broken_links = []
     checked_count = 0
 
     for link in matches:
-        # Skip external URLs, protocol schemes, javascript, anchors, mailto
+        # Skip external URLs, protocol schemes, javascript, anchors, mailto, tel, data
         if link.startswith(("http://", "https://", "mailto:", "javascript:", "#", "tel:", "data:")):
             continue
         
@@ -36,7 +38,10 @@ def check_file_links(html_file: Path) -> int:
         if not clean_path:
             continue
 
-        target = (REPO_DIR / clean_path).resolve()
+        if clean_path.startswith("/"):
+            target = (REPO_DIR / clean_path.lstrip("/")).resolve()
+        else:
+            target = (html_file.parent / clean_path).resolve()
         checked_count += 1
 
         if not target.exists():
@@ -53,7 +58,7 @@ def check_file_links(html_file: Path) -> int:
 
 def main():
     exit_code = 0
-    targets = [REPO_DIR / "portfolio_ai.html", REPO_DIR / "index.html"]
+    targets = sorted(list(REPO_DIR.glob("*.html")) + list((REPO_DIR / "components").glob("*.html")))
     for t in targets:
         if t.exists():
             code = check_file_links(t)

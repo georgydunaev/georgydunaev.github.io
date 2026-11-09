@@ -6,9 +6,17 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 urls = [
     "https://georgydunaev.github.io/",
+    "https://georgydunaev.github.io/portfolio_ai.html",
+    "https://georgydunaev.github.io/classic.html",
     "https://georgydunaev.github.io/business_card.html",
+    "https://georgydunaev.github.io/sessions_log.html",
+    "https://georgydunaev.github.io/interactive_diagrams.html",
+    "https://georgydunaev.github.io/antivibecoding.html",
+    "https://georgydunaev.github.io/yoneda_ai.html",
+    "https://georgydunaev.github.io/links.html",
     "https://georgydunaev.github.io/CV_EN.pdf",
-    "https://georgydunaev.github.io/CV_DE.pdf"
+    "https://georgydunaev.github.io/CV_DE.pdf",
+    "https://georgydunaev.github.io/cover_letter_en.pdf"
 ]
 
 now = datetime.date.today().isoformat()

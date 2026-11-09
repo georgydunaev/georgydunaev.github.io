@@ -10,11 +10,11 @@
     { title: "Yoneda Lemma & Presheaf Categories", category: "Research", url: "#math", tags: ["Category Theory", "Yoneda", "Presheaves", "Functors", "Adjunctions"], snippet: "Interactive visualization: Nat(h_A, F) ≅ F(A) for locally small categories." },
     { title: "Obelisk Proof Assistant", category: "Software", url: "https://obeliskproofassistant.github.io", tags: ["Proof Assistant", "Sequent Calculus", "De Bruijn", "Morse-Kelley"], snippet: "Standalone theorem prover in Standard ML with verified deduction engine." },
     { title: "Anti-Vibe Coding Manifesto", category: "Methodology", url: "https://georgydunaev.github.io/antivibecoding", tags: ["Verification", "Anti-Vibe", "Formal Methods", "Dijkstra"], snippet: "The Ten Inviolable Laws of Rigorous Verification against unverified vibe coding." },
-    { title: "Curriculum Vitae (Executive 1-Page)", category: "CV", url: "/preview/CV/CV_Executive.pdf", tags: ["CV", "Resume", "Executive", "FinTech", "Quant"], snippet: "Compact, high-impact 1-page CV for engineering leadership." },
-    { title: "Curriculum Vitae (Full 2-Page English PDF)", category: "CV", url: "/preview/CV/CV_EN.pdf", tags: ["CV", "Resume", "English", "ReportLab"], snippet: "Complete 2-page formal methods and logic engineering resume." },
-    { title: "Lebenslauf (German 2-Page PDF)", category: "CV", url: "/preview/CV/CV_DE.pdf", tags: ["CV", "Lebenslauf", "German", "Deutsch"], snippet: "Deutscher Lebenslauf mit Publikationen und Lehre an der Universität Potsdam." },
-    { title: "Formal Methods Cover Letter", category: "Career", url: "/preview/CV/cover_letter_en.pdf", tags: ["Cover Letter", "Formal Verification", "Logic", "Letter"], snippet: "Targeted formal methods cover letter articulating engineering impact." },
-    { title: "3D Digital Business Card", category: "Interactive", url: "/preview/CV/business_card.html", tags: ["Business Card", "vCard", "Interactive", "3D"], snippet: "Interactive 3D flip card with QR code and contact export." }
+    { title: "Curriculum Vitae (Executive 1-Page)", category: "CV", url: "CV_Executive.pdf", tags: ["CV", "Resume", "Executive", "FinTech", "Quant"], snippet: "Compact, high-impact 1-page CV for engineering leadership." },
+    { title: "Curriculum Vitae (Full 2-Page English PDF)", category: "CV", url: "CV_EN.pdf", tags: ["CV", "Resume", "English", "ReportLab"], snippet: "Complete 2-page formal methods and logic engineering resume." },
+    { title: "Lebenslauf (German 2-Page PDF)", category: "CV", url: "CV_DE.pdf", tags: ["CV", "Lebenslauf", "German", "Deutsch"], snippet: "Deutscher Lebenslauf mit Publikationen und Lehre an der Universität Potsdam." },
+    { title: "Formal Methods Cover Letter", category: "Career", url: "cover_letter_en.pdf", tags: ["Cover Letter", "Formal Verification", "Logic", "Letter"], snippet: "Targeted formal methods cover letter articulating engineering impact." },
+    { title: "3D Digital Business Card", category: "Interactive", url: "business_card.html", tags: ["Business Card", "vCard", "Interactive", "3D"], snippet: "Interactive 3D flip card with QR code and contact export." }
   ];
 
   window.initSearch = function(inputId, resultsId) {
