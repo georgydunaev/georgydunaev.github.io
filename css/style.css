@@ -1,6 +1,10 @@
 /*
   georgydunaev.github.io/css/style.css
   Global Stylesheet & CSS Custom Properties for Georgy Dunaev Portfolio
+
+  Note: Standard element selectors are scoped under .gd-style-scope so that
+  including this stylesheet on an unrelated page has no effect unless that
+  class is explicitly applied.
 */
 
 :root {
@@ -25,13 +29,13 @@
   --tag-border: rgba(37, 99, 235, 0.35);
 }
 
-* {
+.gd-style-scope, .gd-style-scope * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-body {
+.gd-style-scope {
+  margin: 0;
+  padding: 0;
   background-color: var(--bg);
   color: var(--text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -39,11 +43,11 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-.card, .publication-card {
+.gd-style-scope .card, .gd-style-scope .publication-card {
   transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 
-.noscript-banner {
+.gd-style-scope .noscript-banner {
   background: rgba(37, 99, 235, 0.14);
   border-bottom: 1px solid rgba(56, 189, 248, 0.35);
   color: var(--text-main);
@@ -52,17 +56,17 @@ body {
   text-align: center;
 }
 
-a {
+.gd-style-scope a {
   color: var(--highlight);
   text-decoration: none;
   transition: color 0.2s;
 }
 
-a:hover {
+.gd-style-scope a:hover {
   color: var(--accent-light);
   text-decoration: underline;
 }
 
-code, pre {
+.gd-style-scope code, .gd-style-scope pre {
   font-family: 'JetBrains Mono', monospace;
 }
