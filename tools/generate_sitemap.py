@@ -9,7 +9,6 @@ urls = [
     "https://georgydunaev.github.io/portfolio_ai.html",
     "https://georgydunaev.github.io/classic.html",
     "https://georgydunaev.github.io/business_card.html",
-    "https://georgydunaev.github.io/sessions_log.html",
     "https://georgydunaev.github.io/interactive_diagrams.html",
     "https://georgydunaev.github.io/antivibecoding.html",
     "https://georgydunaev.github.io/yoneda_ai.html",

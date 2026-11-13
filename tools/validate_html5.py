@@ -5,7 +5,7 @@ from pathlib import Path
 pdir = Path(__file__).resolve().parent.parent
 full_pages = [
     "index.html", "portfolio_ai.html", "classic.html", "aboutme.html",
-    "business_card.html", "sessions_log.html", "interactive_diagrams.html",
+    "business_card.html", "interactive_diagrams.html",
     "antivibecoding.html", "yoneda_ai.html", "hub.html", "links.html"
 ]
 
