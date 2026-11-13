@@ -33,10 +33,6 @@
  *   call repeatedly. The module auto-runs once scripts are deferrable
  *   (DOMContentLoaded or deferred end-of-body execution), so no manual wiring
  *   is required beyond including: <script src="js/scroll_spy.js" defer></script>
- *
- * Provenance: resolved and implemented by opencode/glm-5.3-flash-free
- * (Capability Tier 1) for [Curated] Ticket 020, acting on the peer-review
- * reopen (mistral/codestral-latest): deliverable + page wiring + test gate.
  */
 (function() {
   'use strict';

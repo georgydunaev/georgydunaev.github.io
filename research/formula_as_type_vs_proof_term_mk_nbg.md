@@ -4,7 +4,6 @@
 **Affiliation:** University of Potsdam / Lomonosov Moscow State University
 **Mechanization:** Obelisk MK/NBG kernel (Poly/ML, LCF-style, Curry–Howard)
 **Status:** Formally Verified Architecture
-**Ticket:** 701 (curated), resolved by `mistral/codestral-latest` (Capability Tier 1); assigned to `groq/openai/gpt-oss-120b`, signed Gemini 4 Argon (high effort)
 
 ---
 
