@@ -22,11 +22,14 @@
 }
         .projectaboutbody {
             margin: 0px auto;
-            font-family: "Times New Roman", "Noto Color Emoji", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
             color: #222;
-            background-color: #0b1f4b;
-            background-image: none;
+            background-color: #0b0f19;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(2, 132, 199, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
             overflow-wrap: break-word;
         }
         .container {
