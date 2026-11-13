@@ -837,7 +837,7 @@
         : document.getElementById('pf-rec-c').innerText;
       navigator.clipboard.writeText(text.trim()).then(() => {
         const orig = btn.innerText;
-        btn.innerText = '✓ Copied!';
+        btn.innerText = 'Copied!';
         btn.style.color = '#34d399';
         setTimeout(() => {
           btn.innerText = orig;

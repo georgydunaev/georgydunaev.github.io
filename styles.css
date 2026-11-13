@@ -1,7 +1,5 @@
 
 
-/* Import from Google Fonts (or self-host for reliability) */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
 
         .projectaboutbody, .projectaboutbody *, .projectaboutbody *::before, .projectaboutbody *::after,
         .indexbody, .indexbody *, .indexbody *::before, .indexbody *::after {
@@ -220,7 +218,7 @@ horizontal-align: right;
     align-items: center;
             border: none;
             overflow: hidden;
-            width: 100%-24px;
+            width: calc(100% - 24px);
             height: auto;
             position: fixed;
         }
