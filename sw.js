@@ -1,8 +1,9 @@
-// Lightweight Service Worker for Portfolio Offline Support
-const CACHE_NAME = 'georgy-portfolio-v2';
+// Lightweight Service Worker for Portfolio Offline Support (Network-First)
+const CACHE_NAME = 'georgy-portfolio-v4';
 const ASSETS = [
   '/',
   '/index.html',
+  '/aboutme.html',
   '/portfolio_ai.html',
   '/business_card.html',
   '/styles.css',
@@ -15,7 +16,8 @@ const ASSETS = [
   '/js/search.js',
   '/js/scroll_spy.js',
   '/js/bibtex_copy.js',
-  '/js/topic_filter.js'
+  '/js/topic_filter.js',
+  '/js/gallery_lightbox.js'
 ];
 
 self.addEventListener('install', (e) => {
@@ -37,7 +39,16 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then((resp) => resp || fetch(e.request))
+    fetch(e.request)
+      .then((resp) => {
+        if (resp && resp.status === 200) {
+          const clone = resp.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+        }
+        return resp;
+      })
+      .catch(() => caches.match(e.request))
   );
 });
