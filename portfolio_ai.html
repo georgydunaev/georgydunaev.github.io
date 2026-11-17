@@ -276,6 +276,154 @@
 
     footer { border-top: 1px solid var(--card-border); padding: 2.5rem 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
+    .gd-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gd-gallery-card {
+      display: block;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 0.65rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .gd-gallery-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--highlight);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .gd-gallery-thumb {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+      background: #0f172a;
+    }
+    .gd-gallery-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+    .gd-lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      background: rgba(11, 15, 25, 0.88);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .gd-lightbox-overlay.is-open { display: flex; }
+    .gd-lightbox-dialog {
+      background: #0f172a;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 16px;
+      max-width: 94vw;
+      max-height: 92vh;
+      width: 1120px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      color: #f8fafc;
+    }
+    .gd-lightbox-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .gd-lightbox-counter {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .gd-lightbox-caption {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      text-align: center;
+      flex: 1;
+    }
+    .gd-lightbox-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 0;
+    }
+    .gd-lightbox-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      max-height: 76vh;
+      overflow: hidden;
+      background: #020617;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px;
+    }
+    .gd-lightbox-img {
+      max-width: 100%;
+      max-height: 72vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: 4px;
+    }
+    .gd-lightbox-btn {
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+    .gd-lightbox-btn:hover {
+      background: #2563eb;
+      border-color: #60a5fa;
+    }
+    .gd-lightbox-close {
+      padding: 6px 14px;
+      background: rgba(239, 68, 68, 0.18);
+      border-color: rgba(248, 113, 113, 0.45);
+    }
+    .gd-lightbox-close:hover {
+      background: #dc2626;
+      border-color: #f87171;
+    }
+    @media (max-width: 720px) {
+      .gd-lightbox-body { flex-wrap: wrap; }
+      .gd-lightbox-stage { order: -1; flex-basis: 100%; max-height: 62vh; }
+      .gd-lightbox-nav { flex: 1; text-align: center; }
+    }
+
     @media (max-width: 850px) {
       .hero { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
       .hero-actions { justify-content: center; }
@@ -300,6 +448,7 @@
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#math">Mathematics</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -453,6 +602,67 @@
             <span class="tech-tag">HoTT</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM SCREENSHOTS GALLERY -->
+    <section id="gallery">
+      <div class="section-header">
+        <span class="section-tag">Autonomous Engineering Platform</span>
+        <h2 class="section-title">Platform Interface Gallery</h2>
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 0.4rem;">
+          Click any screenshot to open the centered full-size viewer with Previous and Next navigation controls.
+        </p>
+      </div>
+      <div class="gd-gallery-grid">
+        <a href="images/edited/01.png" class="gd-gallery-card" data-gallery-index="0" data-gallery-src="images/edited/01.png" data-gallery-caption="01. Fleet Operations &amp; Autonomous Processes">
+          <img src="images/edited/01.png" alt="01. Fleet Operations &amp; Autonomous Processes" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">01. Fleet Operations</div>
+        </a>
+        <a href="images/edited/02.png" class="gd-gallery-card" data-gallery-index="1" data-gallery-src="images/edited/02.png" data-gallery-caption="02. Subscriptions, Quotas &amp; Renewal Calendar">
+          <img src="images/edited/02.png" alt="02. Subscriptions, Quotas &amp; Renewal Calendar" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">02. Subscriptions &amp; Quotas</div>
+        </a>
+        <a href="images/edited/03.png" class="gd-gallery-card" data-gallery-index="2" data-gallery-src="images/edited/03.png" data-gallery-caption="03. Autonomous Processes &amp; Sentinel Controls">
+          <img src="images/edited/03.png" alt="03. Autonomous Processes &amp; Sentinel Controls" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">03. Sentinel Controls</div>
+        </a>
+        <a href="images/edited/04.png" class="gd-gallery-card" data-gallery-index="3" data-gallery-src="images/edited/04.png" data-gallery-caption="04. Staggered Dispatch &amp; Signal Stream">
+          <img src="images/edited/04.png" alt="04. Staggered Dispatch &amp; Signal Stream" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">04. Dispatch &amp; Signals</div>
+        </a>
+        <a href="images/edited/05.png" class="gd-gallery-card" data-gallery-index="4" data-gallery-src="images/edited/05.png" data-gallery-caption="05. Network Usage Graph &amp; Hardware Telemetry">
+          <img src="images/edited/05.png" alt="05. Network Usage Graph &amp; Hardware Telemetry" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">05. Network &amp; Telemetry</div>
+        </a>
+        <a href="images/edited/06.png" class="gd-gallery-card" data-gallery-index="5" data-gallery-src="images/edited/06.png" data-gallery-caption="06. Live Subagents, Thermal &amp; Blue/Green Status">
+          <img src="images/edited/06.png" alt="06. Live Subagents, Thermal &amp; Blue/Green Status" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">06. Blue/Green &amp; Subagents</div>
+        </a>
+        <a href="images/edited/07.png" class="gd-gallery-card" data-gallery-index="6" data-gallery-src="images/edited/07.png" data-gallery-caption="07. LLM Model Zoo &amp; Local Inference">
+          <img src="images/edited/07.png" alt="07. LLM Model Zoo &amp; Local Inference" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">07. Model Zoo &amp; Local LLM</div>
+        </a>
+        <a href="images/edited/08.png" class="gd-gallery-card" data-gallery-index="7" data-gallery-src="images/edited/08.png" data-gallery-caption="08. Model Performance Scoreboard &amp; Quality Roster">
+          <img src="images/edited/08.png" alt="08. Model Performance Scoreboard &amp; Quality Roster" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">08. Model Scoreboard</div>
+        </a>
+        <a href="images/edited/09.png" class="gd-gallery-card" data-gallery-index="8" data-gallery-src="images/edited/09.png" data-gallery-caption="09. Ticket Dependency Graph &amp; Velocity Estimations">
+          <img src="images/edited/09.png" alt="09. Ticket Dependency Graph &amp; Velocity Estimations" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">09. Dependency DAG</div>
+        </a>
+        <a href="images/edited/10.png" class="gd-gallery-card" data-gallery-index="9" data-gallery-src="images/edited/10.png" data-gallery-caption="10. Project Repositories &amp; Ticket Summary">
+          <img src="images/edited/10.png" alt="10. Project Repositories &amp; Ticket Summary" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">10. Repositories &amp; Tickets</div>
+        </a>
+        <a href="images/edited/11.png" class="gd-gallery-card" data-gallery-index="10" data-gallery-src="images/edited/11.png" data-gallery-caption="11. Quota Renewal Schedule &amp; Reset Timers">
+          <img src="images/edited/11.png" alt="11. Quota Renewal Schedule &amp; Reset Timers" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">11. Renewal Schedule</div>
+        </a>
+        <a href="images/edited/12.png" class="gd-gallery-card" data-gallery-index="11" data-gallery-src="images/edited/12.png" data-gallery-caption="12. Live Process Execution Log &amp; Ticket History">
+          <img src="images/edited/12.png" alt="12. Live Process Execution Log &amp; Ticket History" class="gd-gallery-thumb" loading="lazy">
+          <div class="gd-gallery-label">12. Process Execution Log</div>
+        </a>
       </div>
     </section>
 
@@ -805,6 +1015,7 @@
   <script src="js/scroll_spy.js" defer></script>
   <script src="js/bibtex_copy.js" defer></script>
   <script src="js/topic_filter.js" defer></script>
+  <script src="js/gallery_lightbox.js" defer></script>
   <script>
     if (window.initSearch) {
       window.initSearch('search-input', 'search-results');
