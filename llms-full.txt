@@ -1,0 +1,35 @@
+# Georgy Dunaev — Complete Agent Context (`llms-full.txt`)
+
+> Canonical URL: https://georgydunaev.github.io/llms-full.txt
+> Index URL: https://georgydunaev.github.io/llms.txt
+> Person Schema: https://georgydunaev.github.io/assets/meta/person_schema.json
+> Companion Prover Portal: https://obeliskproofassistant.github.io/llms.txt
+
+## 1. Identity & Academic Background
+
+- **Name**: Georgy Dunaev
+- **Role**: Software Engineer & Formal Verification Specialist
+- **Website**: https://georgydunaev.github.io
+- **GitHub**: https://github.com/georgydunaev
+- **LinkedIn**: https://linkedin.com/in/georgy-dunaev
+- **Alma Mater**:
+  - University of Potsdam
+  - Lomonosov Moscow State University
+  - Bauman Moscow State Technical University
+
+## 2. Core Research & Engineering Contributions
+
+### Obelisk Proof Assistant (`MKTD1-system` & `MKTD2-system`)
+- **Dual CakeML & Poly/ML Kernel Architecture**: Written in strict portable Standard ML (SML'97) so that the entire proof kernel, type checker, and theory exporters compile and execute identically under both Poly/ML and CakeML.
+- **`MKTD1-system` (`MKTD1-framework` / `MKTD1-theory`)**: A sequent-calculus and typed-AST proof assistant for Morse-Kelley (MK) and von Neumann-Bernays-Goedel (NBG) class theory (`Class.Expression`, `Fm.Expression`, `Stmt.Expression`, `Ctx.Expression`, `Theory.Expression`, `Prf.Expression`). Includes 118 catalog entries (`1.1` through `5.21`) covering propositional/quantifier calculi, explicit capture-avoiding substitution hygiene (`FV`, `IFV`, `FFI`), Dunaev Tagged Ordered Pairs `(A, B)_D`, Kleene star tuple disjointness, decoupled semantic vs. syntactic completeness of full theories, and the complete machine-verified proof that every Grothendieck-Tarski universe $U$ satisfies $U = V_{U \cap \mathrm{On}}$ (`ThmUniverseEqVonNeumannStageInterOn`, Entry `3.90`).
+- **`MKTD2-system` (`MKTD2-framework` / `MKTD2-theory`)**: A constructive dependent propositions-as-types proof assistant (`Π`, `Σ`, `λ`, dependent projections, propositional equality) featuring 220 mechanically type-checked records (197 derived constructive theorems, 16 conservative definitions, 7 irreducible MK/NBG axioms) spanning propositional/predicate logic, set/class algebra, ordinal arithmetic, category theory, Yoneda lemma, monads, kan extensions, ends/coends, and 2-categories.
+- **Dunaev Tagged Ordered Pairs**: Defines `(A, B)_D = {0 x x | x in A} U {1 x y | y in B}` so that ordered pairs, Cartesian products, and $n$-tuples operate uniformly on arbitrary proper classes and sets without collapsing when a component is a proper class (`A notin V`).
+
+## 3. Machine-Readable Resources
+
+- Person JSON-LD: `https://georgydunaev.github.io/assets/meta/person_schema.json`
+- Obelisk `MKTD1-system` Markdown Manual: `https://obeliskproofassistant.github.io/generated/manual.md`
+- Obelisk `MKTD2-system` Markdown Library: `https://obeliskproofassistant.github.io/generated/nbg_library.md`
+- Obelisk `MKTD1-system` JSON Database: `https://obeliskproofassistant.github.io/generated/theory_db.json`
+- Obelisk `MKTD2-system` JSON Database: `https://obeliskproofassistant.github.io/generated/nbg_library.json`
+- Monograph PDF (424 pages): `https://obeliskproofassistant.github.io/foundations.pdf`

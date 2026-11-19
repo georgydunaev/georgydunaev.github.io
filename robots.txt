@@ -1,3 +1,21 @@
 User-agent: *
 Allow: /
+
+# Non-attacking AI and LLM research agents are explicitly welcomed.
+# Prefer /llms.txt, /llms-full.txt, and /assets/meta/person_schema.json for structured context.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://georgydunaev.github.io/sitemap.xml

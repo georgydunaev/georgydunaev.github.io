@@ -1,0 +1,27 @@
+# Georgy Dunaev — Software Engineer & Formal Verification Specialist
+
+> Personal academic and engineering homepage of Georgy Dunaev (`https://georgydunaev.github.io`), Software Engineer and Formal Verification Specialist, creator of the Obelisk Proof Assistant (`MKTD1-system` & `MKTD2-system`), and researcher in mathematical logic, Morse-Kelley / NBG class theory, dependent type theory, and verified software systems.
+
+Non-attacking AI agents, academic search indexers, and answer engines are welcomed. For direct, zero-HTML-noise context, inspect `/llms-full.txt`, `/assets/meta/person_schema.json`, and the Markdown endpoints on the companion Obelisk Proof Assistant portal.
+
+## Structured Profile & Agent Endpoints
+
+- [Complete Agent Biography & Research Summary (`llms-full.txt`)](https://georgydunaev.github.io/llms-full.txt): Self-contained Markdown dossier of Georgy Dunaev's education, publications, formal verification architecture, and projects.
+- [Canonical Schema.org Person Record (JSON-LD)](https://georgydunaev.github.io/assets/meta/person_schema.json): Machine-readable structured identity record.
+- [Curriculum Vitae (English PDF)](https://georgydunaev.github.io/CV_EN.pdf): Full academic and industry CV in English.
+- [Curriculum Vitae (German PDF)](https://georgydunaev.github.io/CV_DE.pdf): Full academic and industry CV in German.
+
+## Obelisk Proof Assistant & Mathematical Foundations
+
+- [Obelisk Proof Assistant Portal](https://obeliskproofassistant.github.io/): Main portal for `MKTD1-system` (118 sequent-calculus entries) and `MKTD2-system` (220 constructive dependent-type theorems).
+- [Obelisk LLMs Index (`llms.txt`)](https://obeliskproofassistant.github.io/llms.txt): Agent-first Markdown and JSON endpoints for Obelisk Proof Assistant.
+- [Foundations of Mathematics and the Obelisk Proof Assistant (PDF, 424 pages)](https://obeliskproofassistant.github.io/foundations.pdf): Comprehensive monograph on `MKTD1-framework`, `MKTD2-framework`, Dunaev Tagged Ordered Pairs, and Grothendieck-Tarski universes.
+- [MKTD1-system Complete Reference Manual (Markdown)](https://obeliskproofassistant.github.io/generated/manual.md): Pure Markdown export of all 118 `MKTD1-system` entries.
+- [MKTD2-system Constructive Theorem Library (Markdown)](https://obeliskproofassistant.github.io/generated/nbg_library.md): Pure Markdown export of all 220 `MKTD2-system` records.
+
+## Portfolio & Interactive Pages
+
+- [Portfolio & Technical Overview](https://georgydunaev.github.io/portfolio_ai.html): Engineering and formal verification portfolio.
+- [About Me](https://georgydunaev.github.io/aboutme.html): Biography, academic background, and research interests.
+- [Yoneda Lemma Formalization Overview](https://georgydunaev.github.io/yoneda_ai.html): Constructive category theory and Yoneda embedding in `MKTD2-system`.
+- [Anti-Vibecoding Manifesto](https://georgydunaev.github.io/antivibecoding.html): Rigorous machine-checked engineering vs. unverified code generation.

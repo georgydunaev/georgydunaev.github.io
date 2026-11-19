@@ -17,7 +17,9 @@ urls = [
     "https://georgydunaev.github.io/links.html",
     "https://georgydunaev.github.io/CV_EN.pdf",
     "https://georgydunaev.github.io/CV_DE.pdf",
-    "https://georgydunaev.github.io/cover_letter_en.pdf"
+    "https://georgydunaev.github.io/cover_letter_en.pdf",
+    "https://georgydunaev.github.io/llms.txt",
+    "https://georgydunaev.github.io/llms-full.txt"
 ]
 
 now = datetime.date.today().isoformat()
