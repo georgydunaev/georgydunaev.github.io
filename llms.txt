@@ -13,11 +13,11 @@ Non-attacking AI agents, academic search indexers, and answer engines are welcom
 
 ## Obelisk Proof Assistant & Mathematical Foundations
 
-- [Obelisk Proof Assistant Portal](https://obeliskproofassistant.github.io/): Main portal for `MKTD1-system` (118 sequent-calculus entries) and `MKTD2-system` (220 constructive dependent-type theorems).
+- [Obelisk Proof Assistant Portal](https://obeliskproofassistant.github.io/): Main portal for `MKTD1-system` (118 sequent-calculus entries) and `MKTD2-system` (225 constructive dependent-type theorems).
 - [Obelisk LLMs Index (`llms.txt`)](https://obeliskproofassistant.github.io/llms.txt): Agent-first Markdown and JSON endpoints for Obelisk Proof Assistant.
 - [Foundations of Mathematics and the Obelisk Proof Assistant (PDF, 424 pages)](https://obeliskproofassistant.github.io/foundations.pdf): Comprehensive monograph on `MKTD1-framework`, `MKTD2-framework`, Dunaev Tagged Ordered Pairs, and Grothendieck-Tarski universes.
 - [MKTD1-system Complete Reference Manual (Markdown)](https://obeliskproofassistant.github.io/generated/manual.md): Pure Markdown export of all 118 `MKTD1-system` entries.
-- [MKTD2-system Constructive Theorem Library (Markdown)](https://obeliskproofassistant.github.io/generated/nbg_library.md): Pure Markdown export of all 220 `MKTD2-system` records.
+- [MKTD2-system Constructive Theorem Library (Markdown)](https://obeliskproofassistant.github.io/generated/nbg_library.md): Pure Markdown export of all 225 `MKTD2-system` records.
 
 ## Portfolio & Interactive Pages
 
