@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+  AUTO-GENERATED FILE — DO NOT EDIT DIRECTLY.
+  Source Markdown: research/formula_as_type_vs_proof_term_mk_nbg.md
+  Generator: /botworkspace/tools/render_site_markdown.py
+  Regenerate: python3 /botworkspace/tools/render_site_markdown.py
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulas as Types, Proofs as Terms: Compile-Time Soundness of the Obelisk MK/NBG Kernel</title>
+  <link rel="alternate" type="text/markdown" href="formula_as_type_vs_proof_term_mk_nbg.md">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+      --code-bg: #0b1120;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --accent: #0284c7;
+        --border: #cbd5e1;
+        --code-bg: #f1f5f9;
+      }
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      margin: 0;
+      padding: 24px 16px 64px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 36px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, h4 { color: var(--text); line-height: 1.3; margin-top: 1.5em; }
+    h1 { margin-top: 0.2em; font-size: 1.75rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+    }
+    code {
+      background: var(--code-bg);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88em;
+    }
+    pre code { background: transparent; padding: 0; }
+    blockquote {
+      margin: 1em 0;
+      padding: 10px 16px;
+      border-left: 4px solid var(--accent);
+      background: var(--code-bg);
+      color: var(--muted);
+    }
+    .table-wrap { overflow-x: auto; margin: 1.2em 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+    th { background: var(--code-bg); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div><a href="../">[Home]</a> &middot; <a href="../about.html">[About]</a></div>
+      <div><a href="formula_as_type_vs_proof_term_mk_nbg.md">[Raw .md]</a></div>
+    </div>
+    <h1 id="formulas-as-types-proofs-as-terms-compile-time-soundness-of-the-obelisk-mk-nbg-kernel">Formulas as Types, Proofs as Terms: Compile-Time Soundness of the Obelisk MK/NBG Kernel</h1>
+<p><strong>Author:</strong> Georgy Dunaev</p>
+<p><strong>Affiliation:</strong> University of Potsdam / Lomonosov Moscow State University</p>
+<p><strong>Mechanization:</strong> Obelisk MK/NBG kernel (Poly/ML, LCF-style, Curry–Howard)</p>
+<p><strong>Status:</strong> Formally Verified Architecture</p>
+<hr>
+<h2 id="1-abstract">1. Abstract</h2>
+<p>In the Obelisk proof assistant for Morse–Kelley / Bernays–Gödel class theory, a</p>
+<p><strong>formula is a type</strong> and a <strong>proof is an explicit lambda/eliminator term</strong>.</p>
+<p>Declaring a formula never proves anything — a false formula is simply an</p>
+<p><em>empty type</em>. Soundness is enforced not by review but by the type discipline</p>
+<p>of the kernel&#x27;s sort system: Russell&#x27;s paradoxical class</p>
+<p><code>R = { x | x notin x }</code> is a well-sorted inhabitant of <code>ClassSort</code> but can</p>
+<p>never be <em>packed</em> into <code>SetSort</code>. The checking of a <code>theorem</code> declaration is</p>
+<p>itself the verification of its proof.</p>
+<hr>
+<h2 id="2-two-distinct-languages">2. Two Distinct Languages</h2>
+<h3 id="2-1-formulas-are-types">2.1 Formulas are Types</h3>
+<pre><code class="language-nbg">(* TRUE formula — a non-empty (inhabited) type *)
+formula EmptyHasNoElements = forall (z:Class). z in { x | Bot } -&gt; Bot;
+
+(* FALSE formulas — perfectly legal, well-formed, but UNINHABITED types *)
+formula False_RussellIsSet    = Set({ x | x in x -&gt; Bot });
+formula False_UnivInUniv      = { x | Top } in { x | Top };
+formula False_MembershipSym   = forall (A:Class). forall (B:Class). A in B -&gt; B in A;</code></pre>
+<p><code>formula &lt;Name&gt; = &lt;Formula&gt;;</code> introduces a type in <code>NBGCompiler.Type</code>.</p>
+<p>Mathematical falsity corresponds to type emptiness (isomorphism with</p>
+<p><code>Bot</code>), not to ill-formedness. Importantly, formula <em>definitions</em> are not</p>
+<p>proofs: a rejected kernel error makes this explicit —</p>
+<pre><code>theorem bad_1 : Set({ x | x in x -&gt; Bot }) = False_RussellIsSet;
+--&gt; TypeError: Cannot use formula definition &#x27;False_RussellIsSet&#x27; as a proof term!</code></pre>
+<h3 id="2-2-proofs-are-terms">2.2 Proofs are Terms</h3>
+<p>A proof is an explicit term in <code>NBGCompiler.Expr</code> built from a <em>closed set</em> of</p>
+<p>primitive inference rules and axiom constructors — <code>compr</code>, <code>fn</code>/<code>Lam</code>, <code>tapp</code>,</p>
+<p><code>pack</code>/<code>unpack</code>, <code>fst</code>/<code>snd</code>, <code>inl</code>/<code>inr</code>/<code>case</code>, <code>abort</code>, <code>refl</code>/<code>sym</code>/<code>trans</code>,</p>
+<p><code>heredity</code>, <code>dunaev_proj</code>:</p>
+<pre><code class="language-nbg">theorem thm_empty_no_elements : forall (z:Class). z in { x | Bot } -&gt; Bot =
+  Lam (z:Class) =&gt;
+    fn (hIn : z in { x | Bot }) =&gt;
+      snd((fst(compr(x. Bot, z)) hIn));
+
+theorem thm_dunaev_proj :
+  forall (A:Class). forall (B:Class). pr1([A, B]_D) = A /\ pr2([A, B]_D) = B =
+  Lam (A:Class) =&gt; Lam (B:Class) =&gt; dunaev_proj(A, B);</code></pre>
+<p>There is no tactic elaboration layer and no operational machine code: to</p>
+<p><em>compile</em> a <code>theorem &lt;Name&gt; : &lt;Formula&gt; = &lt;ProofTerm&gt;;</code> declaration is</p>
+<p>precisely to verify its proof, in the LCF tradition where only the kernel can</p>
+<p>inhabit the theorem&#x27;s type.</p>
+<hr>
+<h2 id="3-sort-discipline-and-the-refutation-of-russell-s-paradox">3. Sort Discipline and the Refutation of Russell&#x27;s Paradox</h2>
+<p>The two-sorted universe (<code>SetSort</code> ⊂ <code>ClassSort</code>) is enforced statically:</p>
+<ul>
+<li><strong>Comprehension</strong> <code>compr(x. φ(x), A)</code> unfolds via an eliminator that</li>
+</ul>
+<p><em>demands a <code>SetSort</code> witness</em> before returning membership: applying the</p>
+<p>eliminator to a bare class argument is a type error</p>
+<p>(<code>EApp argument type mismatch</code>).</p>
+<ul>
+<li><strong>Set-quantifier instantiation</strong> (<code>tapp</code> on <code>forall x:Set. …</code>) rejects</li>
+</ul>
+<p>general class terms (`ETApp sort violation: argument X is a general Class</p>
+<p>and not proven to satisfy Set(X)`).</p>
+<ul>
+<li><strong>SetSort existentials</strong> (<code>pack</code>) only accept manifests, i.e. terms already</li>
+</ul>
+<p>verified to solve <code>Set(z)</code>; Russell&#x27;s class is bar-packed:</p>
+<pre><code>theorem bad_2 : exists (y:Set). y = { x | x in x -&gt; Bot } =
+  pack({ x | x in x -&gt; Bot }, refl(...), exists (y:Set). y = ...);
+--&gt; TypeError: EPack witness `{ x | (x in x -&gt; Bot) }` for SetSort existential
+    is a general Class term, not a verified Set!</code></pre>
+<p>Thus <code>R = { x | x notin x }</code> exists legitimately as a proper class in</p>
+<p><code>ClassSort</code>, and the <em>theorem</em> <code>Set(R) -&gt; Bot</code> has a positive constructive</p>
+<p>proof term (<code>thm_russell_not_set</code>), while its negation never compiles. The</p>
+<p>paradox is not refuted mathematically at runtime — it is **unrepresentable</p>
+<p>at type-check time**.</p>
+<hr>
+<h2 id="4-consequences">4. Consequences</h2>
+<ol>
+<li><strong>False yet legal definitions</strong> let the kernel serve as a <em>test bench</em>:</li>
+</ol>
+<p>the guide&#x27;s Part III deterministically rejects four canonical paradox</p>
+<p>attempts, mechanically distinguishing truth from well-formedness.</p>
+<ol>
+<li><strong>Predicativity is a compiler mode</strong>, not a convention: in Stage I (pure</li>
+</ol>
+<p>NBG) comprehension formulas must quantify only over <code>SetSort</code></p>
+<p>(<code>isPredicativeFormula</code>); Stage II (<code>theory MK_Impredicative;</code>) unlocks</p>
+<p>impredicative Morse–Kelley comprehension over <code>ClassSort</code>.</p>
+<ol>
+<li><strong>Proof irrelevance by construction</strong>: any two terms occupying the same</li>
+</ol>
+<p>formula-type are interchangeable, since only kernel-checked inhabitants</p>
+<p>exist at all.</p>
+<hr>
+<h2 id="5-artifacts">5. Artifacts</h2>
+<ul>
+<li>Kernel guide with verified theorems and rejected counter-attempts:</li>
+</ul>
+<p><code>set_theory_prover/examples/true_and_false_mk_guide.nbg</code></p>
+<ul>
+<li>Propositions-as-types export: <code>set_theory_prover/export/nbg_propositions_as_types.lp</code></li>
+<li>Related research note: <a href="tagged_pairs_regularity.html">Dunaev Tagged Pairs &amp; the Axiom of Regularity</a></li>
+</ul>
+  </div>
+</body>
+</html>

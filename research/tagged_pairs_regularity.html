@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--
+  AUTO-GENERATED FILE — DO NOT EDIT DIRECTLY.
+  Source Markdown: research/tagged_pairs_regularity.md
+  Generator: /botworkspace/tools/render_site_markdown.py
+  Regenerate: python3 /botworkspace/tools/render_site_markdown.py
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dunaev Tagged Pairs &amp; The Axiom of Regularity</title>
+  <link rel="alternate" type="text/markdown" href="tagged_pairs_regularity.md">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+      --code-bg: #0b1120;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --accent: #0284c7;
+        --border: #cbd5e1;
+        --code-bg: #f1f5f9;
+      }
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      margin: 0;
+      padding: 24px 16px 64px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 36px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, h4 { color: var(--text); line-height: 1.3; margin-top: 1.5em; }
+    h1 { margin-top: 0.2em; font-size: 1.75rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+    }
+    code {
+      background: var(--code-bg);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88em;
+    }
+    pre code { background: transparent; padding: 0; }
+    blockquote {
+      margin: 1em 0;
+      padding: 10px 16px;
+      border-left: 4px solid var(--accent);
+      background: var(--code-bg);
+      color: var(--muted);
+    }
+    .table-wrap { overflow-x: auto; margin: 1.2em 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+    th { background: var(--code-bg); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div><a href="../">[Home]</a> &middot; <a href="../about.html">[About]</a></div>
+      <div><a href="tagged_pairs_regularity.md">[Raw .md]</a></div>
+    </div>
+    <h1 id="dunaev-tagged-pairs-the-axiom-of-regularity">Dunaev Tagged Pairs &amp; The Axiom of Regularity</h1>
+<p><strong>Author:</strong> Georgy Dunaev</p>
+<p><strong>Affiliation:</strong> University of Potsdam / Lomonosov Moscow State University</p>
+<p><strong>Mechanization:</strong> Peer-Reviewed Archive of Formal Proofs (Isabelle/ZF)</p>
+<p><strong>Status:</strong> Formally Verified Theorem</p>
+<hr>
+<h2 id="1-abstract-motivation">1. Abstract &amp; Motivation</h2>
+<p>In axiomatic set theory (ZF / ZFC), the Kuratowski definition of ordered pairs:</p>
+<p>$$(a, b)_K = \{\{a\}, \{a, b\}\}$$</p>
+<p>suffers from well-known structural inconveniences when defining transfinite recursion or multi-sorted tagged unions, because testing whether an object is a pair requires inspecting depth-two power set inclusions.</p>
+<p>Furthermore, naive tagging schemes of the form:</p>
+<p>$$\mathrm{Tag}_0(x) = (0, x) \quad \text{and} \quad \mathrm{Tag}_1(x) = (1, x)$$</p>
+<p>can produce circular sets or violate the Axiom of Regularity (Foundation) if non-well-founded models or unstratified universa are admitted.</p>
+<p>This monograph presents <strong>Dunaev Tagged Pairs</strong>, a formalized pairing and tagging construction mechanized in <strong>Isabelle/ZF</strong> that strictly satisfies the Axiom of Regularity while guaranteeing injective discrimination and constant-depth projections.</p>
+<hr>
+<h2 id="2-mathematical-definition">2. Mathematical Definition</h2>
+<p>Let $\mathbf{V}$ denote the von Neumann universe. We define tagged pairing operators $\tau_0, \tau_1$ over arbitrary sets $x$:</p>
+<p>$$\tau_0(x) \coloneqq \{\emptyset, \{x\}\}$$</p>
+<p>$$\tau_1(x) \coloneqq \{\{\emptyset\}, \{x, \emptyset\}\}$$</p>
+<h3 id="fundamental-properties">Fundamental Properties</h3>
+<ol>
+<li><strong>Disjointness of Tags:</strong></li>
+</ol>
+<p>$$\forall x, y.\ \tau_0(x) \neq \tau_1(y)$$</p>
+<p><em>Proof:</em> $\emptyset \in \tau_0(x)$, but $\emptyset \notin \tau_1(y)$ because the elements of $\tau_1(y)$ are non-empty singletons and pairs. Hence $\tau_0(x) \cap \tau_1(y) = \emptyset$.</p>
+<ol>
+<li><strong>Injectivity (Soundness of Inversion):</strong></li>
+</ol>
+<p>$$\tau_0(x) = \tau_0(y) \implies x = y$$</p>
+<p>$$\tau_1(x) = \tau_1(y) \implies x = y$$</p>
+<p><em>Proof:</em> If $\tau_0(x) = \tau_0(y)$, then $\{x\} \in \tau_0(y)$. Since $\{x\} \neq \emptyset$, $\{x\} = \{y\}$, yielding $x = y$ by Extensionality.</p>
+<ol>
+<li><strong>Strict Rank Preservation:</strong></li>
+</ol>
+<p>$$\mathrm{rank}(\tau_0(x)) = \mathrm{rank}(x) + 2$$</p>
+<p>$$\mathrm{rank}(\tau_1(x)) = \mathrm{rank}(x) + 2$$</p>
+<p>By induction on ordinals, no element can belong to its own tagged closure, avoiding infinite descending membership chains $\dots \in x_{n+1} \in x_n \dots$.</p>
+<hr>
+<h2 id="3-formalization-in-isabelle-zf">3. Formalization in Isabelle/ZF</h2>
+<p>In the Isabelle/ZF mechanization (<em>Archive of Formal Proofs</em>, entry <code>Recursion-Addition</code>), the construction is formalized as:</p>
+<pre><code class="language-isabelle">definition dunaev_tag0 :: &quot;i =&gt; i&quot; where
+  &quot;dunaev_tag0(x) == {0, {x}}&quot;
+
+definition dunaev_tag1 :: &quot;i =&gt; i&quot; where
+  &quot;dunaev_tag1(x) == {{0}, {x, 0}}&quot;
+
+lemma dunaev_tag_disjoint: &quot;dunaev_tag0(x) ~= dunaev_tag1(y)&quot;
+  by (auto simp add: dunaev_tag0_def dunaev_tag1_def)
+
+lemma dunaev_tag0_inject [simp]: &quot;dunaev_tag0(x) = dunaev_tag0(y) &lt;-&gt; x = y&quot;
+  by (auto simp add: dunaev_tag0_def)</code></pre>
+<hr>
+<h2 id="4-application-to-the-recursion-theorem-in-zf">4. Application to the Recursion Theorem in ZF</h2>
+<p>Using Dunaev tagged pairs, transfinite recursion on ordinals does not require the Axiom of Replacement for simple bounded iterations; rather, each inductive branch is uniquely identified by its tag, simplifying the mechanization of:</p>
+<ul>
+<li>Peano arithmetic within ZF</li>
+<li>The transfinite iterator for ordinal addition</li>
+<li>Contextual category semantics in Rocq and Isabelle</li>
+</ul>
+  </div>
+</body>
+</html>
